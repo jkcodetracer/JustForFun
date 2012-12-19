@@ -1,0 +1,26 @@
+#!/bin/sh
+
+CURRENTDIR=`pwd`
+MAKEFILE=/usr/bin/makefile.normal
+CURRENTMAKEFILE="${CURRENTDIR}/makefile"
+
+#cp -fr ${MAKEFILE} ${CURRENTMAKEFILE}
+
+if [ ! -e ${CURRENTMAKEFILE} ];then
+	touch ${CURRENTMAKEFILE}	
+else
+	exit 0
+fi
+
+#`date | awk '{print "@create Date:" $1 $2 $3 $4 $5}'`
+
+cp -fr ${MAKEFILE} ${CURRENTMAKEFILE}
+
+sed -i "s/<%CURRENTDATE%>/`date`/g" ${CURRENTMAKEFILE}
+sed -i "s/<%FILENAME%>/"$1"/g" ${CURRENTMAKEFILE}
+#cat ${MAKEFILE} | while read LINE
+#do
+#plate_str=`eval echo "${LINE}"`
+#echo "${plate_str}" >> ${CURRENTMAKEFILE}
+#done
+

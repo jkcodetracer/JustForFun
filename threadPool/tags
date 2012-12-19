@@ -1,0 +1,64 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ASSERT	Jlog.h	32;"	d
+CFLAGS	makefile	/^CFLAGS = -g -O2$/;"	m
+COMPILE.c	makefile	/^COMPILE.c = $(CC) $(MY_CFLAGS) $(CFLAGS)  $(CPPFLAGS) -c$/;"	m
+COMPILE.cxx	makefile	/^COMPILE.cxx = $(CXX) $(MY_CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -c$/;"	m
+CPPFLAGS	makefile	/^CPPFLAGS = -Wall$/;"	m
+CTAGS	makefile	/^CTAGS = ctags$/;"	m
+CTAGSFLAGS	makefile	/^CTAGSFLAGS =$/;"	m
+CUR_PATH_NAMES	makefile	/^  CUR_PATH_NAMES = $(subst \/,$(SPACE),$(subst $(SPACE),_,$(CURDIR)))$/;"	m
+CXXFLAGS	makefile	/^CXXFLAGS = -g -O2$/;"	m
+DEPEND	makefile	/^DEPEND	= $(CC) $(DEP_OPT) $(MY_CFLAGS) $(CFLAGS) $(CPPFLAGS)$/;"	m
+DEPEND.d	makefile	/^DEPEND.d = $(subst -g ,,$(DEPEND))$/;"	m
+DEPS	makefile	/^DEPS	= $(OBJS: .o=.d)$/;"	m
+DEP_OPT	makefile	/^DEP_OPT = $(shell if `$(CC) --version | grep "GCC" >\/dev\/null`; then \\$/;"	m
+EMPTY	makefile	/^EMPTY = $/;"	m
+ERRORLOG	Jlog.h	27;"	d
+ETAGS	makefile	/^ETAGS = etags$/;"	m
+ETAGSFLAGS	makefile	/^ETAGSFLAGS = $/;"	m
+HDREXTS	makefile	/^HDREXTS = .h .H .hh .hpp .HPP .h++ .hxx .hp$/;"	m
+HEADERS	makefile	/^HEADERS = $(foreach d,$(SRCDIRS),$(wildcard $(addprefix $(d)\/*,$(HDREXTS))))$/;"	m
+J_pool_deal_job	ThreadPool.c	/^int J_pool_deal_job(J_thread_pool* thiz, J_process_func new_job)$/;"	f
+J_pool_exit	ThreadPool.c	/^int J_pool_exit(J_thread_pool* thiz)$/;"	f
+J_process_func	ThreadPool.h	/^typedef void* (*J_process_func)()	;$/;"	t
+J_single_thread	ThreadPool.h	/^typedef struct J_single_thread_s J_single_thread;$/;"	t	typeref:struct:J_single_thread_s
+J_single_thread_s	ThreadPool.h	/^struct J_single_thread_s{$/;"	s
+J_thread_pool	ThreadPool.h	/^typedef struct J_thread_pool_s J_thread_pool;$/;"	t	typeref:struct:J_thread_pool_s
+J_thread_pool_s	ThreadPool.h	/^struct J_thread_pool_s{$/;"	s
+LDFLAGS	makefile	/^LDFLAGS = -lpthread $/;"	m
+LINK.c	makefile	/^LINK.c	= $(CC) $(MY_CFLAGS) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)$/;"	m
+LINK.cxx	makefile	/^LINK.cxx = $(CXX) $(MY_CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS)$/;"	m
+MY_CFLAGS	makefile	/^MY_CFLAGS = $/;"	m
+MY_LIBS	makefile	/^MY_LIBS = $/;"	m
+OBJS	makefile	/^OBJS	= $(addsuffix .o, $(basename $(SOURCES)))$/;"	m
+PRINTT	PTmain.c	/^void* PRINTT()$/;"	f
+PROGRAM	makefile	/^  	PROGRAM = a.out$/;"	m
+PROGRAM	makefile	/^  PROGRAM = $(word $(words $(CUR_PATH_NAMES)),$(CUR_PATH_NAMES))$/;"	m
+PROGRAM	makefile	/^PROGRAM = $/;"	m
+SHELL	makefile	/^SHELL = \/bin\/sh$/;"	m
+SOURCES	makefile	/^SOURCES = $(foreach d,$(SRCDIRS),$(wildcard $(addprefix $(d)\/*,$(SRCEXTS))))$/;"	m
+SPACE	makefile	/^SPACE = $(EMPTY) $(EMPTY)$/;"	m
+SRCDIRS	makefile	/^	SRCDIRS = .$/;"	m
+SRCDIRS	makefile	/^SRCDIRS = $/;"	m
+SRCEXTS	makefile	/^SRCEXTS = .c .C .cc .cpp .CPP .c++ .cxx .cp$/;"	m
+SRC_CXX	makefile	/^SRC_CXX = $(filter-out %.c,$(SOURCES))$/;"	m
+WRITELOG	Jlog.h	23;"	d
+_J_LOG_H	Jlog.h	18;"	d
+create_thread_pool	ThreadPool.c	/^J_thread_pool *create_thread_pool(int min_num, int max_num)$/;"	f
+current_num	ThreadPool.h	/^	int current_num;$/;"	m	struct:J_thread_pool_s
+m_cond	ThreadPool.h	/^	pthread_cond_t  m_cond;$/;"	m	struct:J_single_thread_s
+m_mutex	ThreadPool.h	/^	pthread_mutex_t m_mutex;$/;"	m	struct:J_single_thread_s
+m_process_func	ThreadPool.h	/^	J_process_func	m_process_func;$/;"	m	struct:J_single_thread_s
+m_thread	ThreadPool.h	/^	pthread_t		m_thread;$/;"	m	struct:J_single_thread_s
+m_used	ThreadPool.h	/^	int 			m_used;$/;"	m	struct:J_single_thread_s
+main	PTmain.c	/^int main()$/;"	f
+max_num	ThreadPool.h	/^	int max_num;$/;"	m	struct:J_thread_pool_s
+min_num	ThreadPool.h	/^	int min_num;$/;"	m	struct:J_thread_pool_s
+rest_num	ThreadPool.h	/^	int rest_num;$/;"	m	struct:J_thread_pool_s
+thread_com_func	ThreadPool.c	/^static void* thread_com_func(void* args)$/;"	f	file:
+thread_pool	ThreadPool.h	/^	J_single_thread* thread_pool;$/;"	m	struct:J_thread_pool_s

@@ -1,0 +1,921 @@
+cscope 15 $HOME/JustForFun/threadPool -q 0000000073 0000004831
+	@Jlog.h
+
+17 #i‚de‡
+_J_LOG_H
+
+
+18 
+	#_J_LOG_H
+
+
+	)
+
+20 
+	~<î∫o.h
+>
+
+21 
+	~<°rög.h
+>
+
+23 
+	#WRITELOG
+(
+fmt
+, 
+¨gs
+...) do { \
+
+24 
+	`¥ötf
+("%s:%s:%d:"
+fmt
+"\n",
+__FILE__
+, 
+__func__
+,
+__LINE__
+,##
+¨gs
+); \
+
+25 }0)
+
+	)
+
+27 
+	#ERRORLOG
+(
+fmt
+, 
+¨gs
+...) do { \
+
+28 
+	`¥ötf
+("%s:%s:%d:"
+fmt
+"\√ºomsg:%d:%s\n",
+__FILE__
+, 
+__func__
+,\
+
+29 
+__LINE__
+,##
+¨gs
+, 
+î∫o
+, 
+	`°ªº‹
+(errno)); \
+
+30 }0)
+
+	)
+
+32 
+	#ASSERT
+(
+p
+, 
+ªt
+) if(!(p)) \
+
+33 {
+	`¥ötf
+("%s:%s:%d Warning: "#p" failed.\n", \
+
+34 
+__FILE__
+,
+__func__
+, 
+__LINE__
+); (
+ªt
+);}
+
+	)
+
+	@PTmain.c
+
+17 
+	~"ThªadPoﬁ.h
+"
+
+18 
+	~"Jlog.h
+"
+
+19 
+	~<±hªad.h
+>
+
+20 
+	~<°dio.h
+>
+
+22 * 
+	$PRINTT
+()
+
+24 
+	`¥ötf
+("This isáÅest %d\n", 2);
+
+25 
+	}
+}
+
+27 
+	$maö
+()
+
+29 
+J_thªad_poﬁ
+* 
+ã°_poﬁ
+ = 
+	`¸óã_thªad_poﬁ
+(10, 20);
+
+30 
+i
+ = 0;
+
+34 
+i
+ = 0; i < 8; i++)
+
+36 
+	`J_poﬁ_dól_job
+(
+ã°_poﬁ
+, 
+PRINTT
+);
+
+38 
+	`¶ìp
+(5);
+
+42 
+	}
+}
+
+	@ThreadPool.c
+
+18 
+	~"ThªadPoﬁ.h
+"
+
+19 
+	~"Jlog.h
+"
+
+20 
+	~<°dlib.h
+>
+
+22 * 
+	$thªad_com_func
+(* 
+¨gs
+)
+
+24 
+ªt
+ = 0;
+
+26 
+	`ASSERT
+(
+¨gs
+ !
+NULL
+, -1);
+
+28 
+J_sögÀ_thªad
+* 
+p_thªad
+ = (J_sögÀ_thªad*)
+¨gs
+;
+
+30 
+ªt
+ = 
+	`±hªad_dëach
+(
+	`±hªad_£lf
+());
+
+31 if(
+ªt
+ != 0)
+
+33 
+	`ERRORLOG
+("thread detach failed");
+
+34  
+ªt
+;
+
+39 
+	`±hªad_muãx_lock
+(&(
+p_thªad
+->
+m_muãx
+));
+
+40 
+	`WRITELOG
+("thªad:%u waô f‹ c⁄d...", 
+	`±hªad_£lf
+());
+
+41 
+	`±hªad_c⁄d_waô
+(&(
+p_thªad
+->
+m_c⁄d
+),
+
+42 &(
+p_thªad
+->
+m_muãx
+));
+
+43 
+	`±hªad_muãx_u∆ock
+(&(
+p_thªad
+->
+m_muãx
+));
+
+45 
+	`WRITELOG
+("OnÖrocess!");
+
+46 
+p_thªad
+->
+m_¥o˚ss_func
+;
+
+47 
+p_thªad
+->
+m_u£d
+ = 0;
+
+50 
+	}
+}
+
+52 
+J_thªad_poﬁ
+ *
+	$¸óã_thªad_poﬁ
+(
+mö_num
+, 
+max_num
+)
+
+54 
+	`ASSERT
+(
+mö_num
+ <
+max_num
+, -1);
+
+55 
+i
+ = 0;
+
+56 
+ªt
+ = 0;
+
+57 
+J_sögÀ_thªad
+* 
+tmp_li°
+ = 
+NULL
+;
+
+59 
+J_thªad_poﬁ
+* 
+tmp_poﬁ
+ = (J_thªad_poﬁ*)
+	`mÆloc
+((J_thread_pool));
+
+60 if(
+tmp_poﬁ
+ =
+NULL
+)
+
+62 
+	`WRITELOG
+("mallocÅhreadÖool failed");
+
+66 
+	`mem£t
+((*)
+tmp_poﬁ
+, 0, (
+J_thªad_poﬁ
+));
+
+67 
+tmp_poﬁ
+->
+mö_num
+ = min_num;
+
+68 
+tmp_poﬁ
+->
+max_num
+ = max_num;
+
+70 
+tmp_li°
+ = (
+J_sögÀ_thªad
+*)
+	`mÆloc
+((J_sögÀ_thªad)*
+mö_num
+);
+
+71 if(
+tmp_li°
+ =
+NULL
+)
+
+73 
+	`WRITELOG
+("mallocÅhreadÜist failed");
+
+74 
+	`‰ì
+(
+tmp_poﬁ
+);
+
+77 
+tmp_poﬁ
+->
+thªad_poﬁ
+ = 
+tmp_li°
+;
+
+79 
+i
+ = 0; i < 
+mö_num
+; i++)
+
+81 
+tmp_li°
+[
+i
+].
+m_u£d
+ = 0;
+
+82 
+tmp_li°
+[
+i
+].
+m_¥o˚ss_func
+ = 
+NULL
+;
+
+83 
+ªt
+ = 
+	`±hªad_muãx_öô
+(&(
+tmp_li°
+[
+i
+].
+m_muãx
+), 
+NULL
+);
+
+84 if(
+ªt
+ != 0)
+
+86 
+	`ERRORLOG
+("öô muãx faûed: %d", 
+ªt
+);
+
+87 
+	`‰ì
+(
+tmp_li°
+);
+
+88 
+	`‰ì
+(
+tmp_poﬁ
+);
+
+89  
+ªt
+;
+
+91 
+ªt
+ = 
+	`±hªad_c⁄d_öô
+(&(
+tmp_li°
+[
+i
+].
+m_c⁄d
+), 
+NULL
+);
+
+92 if(
+ªt
+ != 0)
+
+94 
+	`ERRORLOG
+("öô c⁄d faûed: %d", 
+ªt
+);
+
+95 
+	`‰ì
+(
+tmp_li°
+);
+
+96 
+	`‰ì
+(
+tmp_poﬁ
+);
+
+97  
+ªt
+;
+
+99 
+ªt
+ = 
+	`±hªad_¸óã
+(&(
+tmp_li°
+[
+i
+].
+m_thªad
+), 
+NULL
+,
+
+100 
+thªad_com_func
+, &(
+tmp_li°
+[
+i
+]));
+
+101 if(
+ªt
+ != 0)
+
+103 
+	`ERRORLOG
+("öôÅhªad faûed: %d", 
+ªt
+);
+
+104 
+	`‰ì
+(
+tmp_li°
+);
+
+105 
+	`‰ì
+(
+tmp_poﬁ
+);
+
+106  
+ªt
+;
+
+109 
+tmp_poﬁ
+->
+cuºít_num
+ = 
+mö_num
+;
+
+110 
+	`‰ì
+(
+tmp_li°
+);
+
+111 
+	`‰ì
+(
+tmp_poﬁ
+);
+
+112  
+ªt
+;
+
+113 
+	}
+}
+
+115 
+	$J_poﬁ_dól_job
+(
+J_thªad_poﬁ
+* 
+thiz
+, 
+J_¥o˚ss_func
+ 
+√w_job
+)
+
+117 
+ªt
+ = 0;
+
+118 
+i
+ = 0;
+
+119 
+	`ASSERT
+((
+thiz
+ !
+NULL
+)&&(
+√w_job
+ != NULL), -1);
+
+121 
+i
+ = 0;ò< 
+thiz
+->
+cuºít_num
+; i++)
+
+123 if(
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_u£d
+ == 0)
+
+125 
+	`WRITELOG
+("%d i†f‹ you!", 
+i
+);
+
+126 
+	`±hªad_muãx_lock
+(&(
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_muãx
+));
+
+127 
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_¥o˚ss_func
+ = 
+√w_job
+;
+
+128 
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_u£d
+ = 1;
+
+129 
+	`±hªad_muãx_u∆ock
+(&(
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_muãx
+));
+
+130 
+	`±hªad_c⁄d_brﬂdˇ°
+(&(
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_c⁄d
+));
+
+135 if(
+i
+ >
+thiz
+->
+cuºít_num
+)
+
+137 
+	`WRITELOG
+("NoÉnoughÅhread for you..");
+
+138 
+ªt
+ = -1;
+
+141  
+ªt
+;
+
+142 
+	}
+}
+
+144 
+	$J_poﬁ_exô
+(
+J_thªad_poﬁ
+* 
+thiz
+)
+
+146 
+	`ASSERT
+(
+thiz
+ !
+NULL
+, -1);
+
+147 
+i
+ = 0;
+
+149 if(
+thiz
+->
+thªad_poﬁ
+ !
+NULL
+)
+
+151 
+i
+ = 0; i < 
+thiz
+->
+cuºít_num
+; i++)
+
+153 
+	`±hªad_kûl
+(
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_thªad
+, 
+SIGQUIT
+);
+
+154 
+	`±hªad_muãx_de°roy
+(&(
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_muãx
+));
+
+155 
+	`±hªad_c⁄d_de°roy
+(&(
+thiz
+->
+thªad_poﬁ
+[
+i
+].
+m_c⁄d
+));
+
+157 
+	`‰ì
+(
+thiz
+->
+thªad_poﬁ
+);
+
+158 
+thiz
+->
+thªad_poﬁ
+ = 
+NULL
+;
+
+161 
+	`‰ì
+(
+thiz
+);
+
+162 
+thiz
+ = 
+NULL
+;
+
+165 
+	}
+}
+
+	@ThreadPool.h
+
+17 
+	~<°dio.h
+>
+
+18 
+	~<±hªad.h
+>
+
+19 
+	~<sig«l.h
+>
+
+21 
+J_thªad_poﬁ_s
+ 
+	tJ_thªad_poﬁ
+;
+
+22 
+J_sögÀ_thªad_s
+ 
+	tJ_sögÀ_thªad
+;
+
+23 * (*
+	tJ_¥o˚ss_func
+)() ;
+
+25 
+	sJ_sögÀ_thªad_s
+{
+
+26 
+	mm_u£d
+;
+
+27 
+±hªad_muãx_t
+ 
+	mm_muãx
+;
+
+28 
+±hªad_c⁄d_t
+ 
+	mm_c⁄d
+;
+
+29 
+±hªad_t
+ 
+	mm_thªad
+;
+
+30 
+J_¥o˚ss_func
+ 
+	mm_¥o˚ss_func
+;
+
+33 
+	sJ_thªad_poﬁ_s
+{
+
+34 
+	mmax_num
+;
+
+35 
+	mmö_num
+;
+
+36 
+	mcuºít_num
+;
+
+37 
+	mª°_num
+;
+
+38 
+J_sögÀ_thªad
+* 
+	mthªad_poﬁ
+;
+
+41 
+J_thªad_poﬁ
+ *
+¸óã_thªad_poﬁ
+(
+mö_mum
+, 
+max_mum
+);
+
+	@
+1
+.
+0
+4
+42
+Jlog.h
+PTmain.c
+ThreadPool.c
+ThreadPool.h

@@ -1,0 +1,117 @@
+
+SimpleSection.o:     file format elf32-i386
+SimpleSection.o
+architecture: i386, flags 0x00000011:
+HAS_RELOC, HAS_SYMS
+start address 0x00000000
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000050  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .data         00000008  00000000  00000000  00000084  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000004  00000000  00000000  0000008c  2**2
+                  ALLOC
+  3 .rodata       00000004  00000000  00000000  0000008c  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .comment      00000026  00000000  00000000  00000090  2**0
+                  CONTENTS, READONLY
+  5 .note.GNU-stack 00000000  00000000  00000000  000000b6  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    df *ABS*	00000000 SimpleSection.c
+00000000 l    d  .text	00000000 .text
+00000000 l    d  .data	00000000 .data
+00000000 l    d  .bss	00000000 .bss
+00000000 l    d  .rodata	00000000 .rodata
+00000004 l     O .data	00000004 static_var.1254
+00000000 l     O .bss	00000004 static_var2.1255
+00000000 l    d  .note.GNU-stack	00000000 .note.GNU-stack
+00000000 l    d  .comment	00000000 .comment
+00000000 g     O .data	00000004 global_init_var
+00000004       O *COM*	00000004 global_uninit_var
+00000000 g     F .text	0000001b func1
+00000000         *UND*	00000000 printf
+0000001b g     F .text	00000035 main
+
+
+
+Disassembly of section .text:
+
+00000000 <func1>:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	83 ec 18             	sub    $0x18,%esp
+   6:	8b 45 08             	mov    0x8(%ebp),%eax
+   9:	89 44 24 04          	mov    %eax,0x4(%esp)
+   d:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+			10: R_386_32	.rodata
+  14:	e8 fc ff ff ff       	call   15 <func1+0x15>
+			15: R_386_PC32	printf
+  19:	c9                   	leave  
+  1a:	c3                   	ret    
+
+0000001b <main>:
+  1b:	55                   	push   %ebp
+  1c:	89 e5                	mov    %esp,%ebp
+  1e:	83 e4 f0             	and    $0xfffffff0,%esp
+  21:	83 ec 20             	sub    $0x20,%esp
+  24:	c7 44 24 1c 01 00 00 	movl   $0x1,0x1c(%esp)
+  2b:	00 
+  2c:	8b 15 04 00 00 00    	mov    0x4,%edx
+			2e: R_386_32	.data
+  32:	a1 00 00 00 00       	mov    0x0,%eax
+			33: R_386_32	.bss
+  37:	8d 04 02             	lea    (%edx,%eax,1),%eax
+  3a:	03 44 24 1c          	add    0x1c(%esp),%eax
+  3e:	03 44 24 18          	add    0x18(%esp),%eax
+  42:	89 04 24             	mov    %eax,(%esp)
+  45:	e8 fc ff ff ff       	call   46 <main+0x2b>
+			46: R_386_PC32	func1
+  4a:	8b 44 24 1c          	mov    0x1c(%esp),%eax
+  4e:	c9                   	leave  
+  4f:	c3                   	ret    
+
+Disassembly of section .data:
+
+00000000 <global_init_var>:
+   0:	54                   	push   %esp
+   1:	00 00                	add    %al,(%eax)
+   3:	00 55 00             	add    %dl,0x0(%ebp)
+
+00000004 <static_var.1254>:
+   4:	55                   	push   %ebp
+   5:	00 00                	add    %al,(%eax)
+   7:	00                   	.byte 0x0
+
+Disassembly of section .bss:
+
+00000000 <static_var2.1255>:
+   0:	00 00                	add    %al,(%eax)
+   2:	00 00                	add    %al,(%eax)
+
+Disassembly of section .rodata:
+
+00000000 <.rodata>:
+   0:	25                   	.byte 0x25
+   1:	64 0a 00             	or     %fs:(%eax),%al
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	00 47 43             	add    %al,0x43(%edi)
+   3:	43                   	inc    %ebx
+   4:	3a 20                	cmp    (%eax),%ah
+   6:	28 55 62             	sub    %dl,0x62(%ebp)
+   9:	75 6e                	jne    79 <main+0x5e>
+   b:	74 75                	je     82 <main+0x67>
+   d:	20 34 2e             	and    %dh,(%esi,%ebp,1)
+  10:	34 2e                	xor    $0x2e,%al
+  12:	33 2d 34 75 62 75    	xor    0x75627534,%ebp
+  18:	6e                   	outsb  %ds:(%esi),(%dx)
+  19:	74 75                	je     90 <main+0x75>
+  1b:	35 2e 31 29 20       	xor    $0x2029312e,%eax
+  20:	34 2e                	xor    $0x2e,%al
+  22:	34 2e                	xor    $0x2e,%al
+  24:	33 00                	xor    (%eax),%eax

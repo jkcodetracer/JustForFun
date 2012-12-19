@@ -1,0 +1,6 @@
+	asm("movl %2,%%eax;mull %3;movl %%eax, %0;
+		setae %%dl; movzbl %%dl, %1"
+		:"=r" (*dest), "=r" (result)
+		:"r" (x), "r" (y)	
+		:"%eax", "%edx"
+		");

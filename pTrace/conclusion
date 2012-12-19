@@ -1,0 +1,2 @@
+1.if you want to find some keywords missing, use the following cmd:
+find /xxx/xxx -iname '*.h' | xargs grep 'xxxx' -sl

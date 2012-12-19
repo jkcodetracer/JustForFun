@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+__base__	base.hpp	2;"	d
+a	a.cpp	/^class a: public baseClass {$/;"	c	file:
+b	b.cpp	/^class b: public baseClass {$/;"	c	file:
+baseClass	base.hpp	/^class baseClass {$/;"	c
+c	c.cpp	/^class c: public baseClass {$/;"	c	file:
+create	a.cpp	/^extern "C" baseClass* create() {$/;"	f
+create	b.cpp	/^extern "C" baseClass* create() {$/;"	f
+create	c.cpp	/^extern "C" baseClass* create() {$/;"	f
+create_t	base.hpp	/^typedef baseClass* (*create_t)();$/;"	t
+destroy	a.cpp	/^extern "C" void destroy(baseClass* p) {$/;"	f
+destroy	b.cpp	/^extern "C" void destroy(baseClass* p) {$/;"	f
+destroy	c.cpp	/^extern "C" void destroy(baseClass* p) {$/;"	f
+destroy_t	base.hpp	/^typedef void (*destroy_t)(baseClass*);$/;"	t
+load_so	main.cpp	/^void *load_so(const char*so_path)$/;"	f
+main	main.cpp	/^int main()$/;"	f
+test	a.cpp	/^    void test()$/;"	f	class:a
+test	b.cpp	/^    void test()$/;"	f	class:b
+test	base.hpp	/^	virtual void test(){};$/;"	f	class:baseClass
+test	c.cpp	/^    void test()$/;"	f	class:c
+test_so	main.cpp	/^int test_so(void *dl)$/;"	f
+~baseClass	base.hpp	/^	virtual ~baseClass(){};$/;"	f	class:baseClass

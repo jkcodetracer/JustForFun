@@ -1,0 +1,1 @@
+cmd_/home/joker/JustForFun/Driver/char_dev/gobal.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-2.6.32-40-generic/scripts/module-common.lds --build-id -o /home/joker/JustForFun/Driver/char_dev/gobal.ko /home/joker/JustForFun/Driver/char_dev/gobal.o /home/joker/JustForFun/Driver/char_dev/gobal.mod.o

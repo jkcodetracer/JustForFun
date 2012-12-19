@@ -1,0 +1,1 @@
+cmd_/home/joker/JustForFun/Driver/compress/global_var.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-2.6.32-40-generic/scripts/module-common.lds --build-id -o /home/joker/JustForFun/Driver/compress/global_var.ko /home/joker/JustForFun/Driver/compress/global_var.o /home/joker/JustForFun/Driver/compress/global_var.mod.o

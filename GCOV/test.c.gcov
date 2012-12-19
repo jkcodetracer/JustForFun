@@ -1,0 +1,45 @@
+        -:    0:Source:test.c
+        -:    0:Graph:test.gcno
+        -:    0:Data:test.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/**
+        -:    2: * \file test.c
+        -:    3: * \author  wzj
+        -:    4: * \brief 
+        -:    5: * \version 
+        -:    6: * \note  
+        -:    7: * \date  2012年09月15日星期六23:19:31
+        -:    8: */ 
+        -:    9:
+        -:   10:#include <stdio.h>
+        -:   11:#include <stdlib.h>
+        -:   12:
+        1:   13:int main(int argc, char *argv[])
+        -:   14:{
+        1:   15:	int i = 0;
+        -:   16:
+        1:   17:	printf("Begin Test...\n");
+        1:   18:	if(1 == argc)
+        -:   19:	{
+        1:   20:		printf("argc == 1\n");
+        -:   21:	} else {
+    #####:   22:		printf("argc != 1\n");
+    #####:   23:		for(i = 0; i < argc; i++)
+    #####:   24:			printf("%d to ft %d\n", i+1, argc);
+        -:   25:	}
+        -:   26:	while(1)
+        -:   27:	{
+        2:   28:		if(i == 10)
+    #####:   29:			i = 0;
+        -:   30:		static int sum = 0;
+        -:   31:
+        2:   32:		if(i%2 == 0)
+        2:   33:			sum += i;
+        -:   34:
+        2:   35:		sleep(1);
+        1:   36:	}
+        -:   37:
+        -:   38:
+        -:   39:	printf("End test !\n");
+        -:   40:}

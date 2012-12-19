@@ -1,0 +1,83 @@
+#!/bin/sh
+
+check_failed=0
+
+current_path=`pwd`
+package_dir="${current_path}"/package/
+echo $current_path
+echo
+
+if [ ! -d "$1" -a ! -f "$1" ]
+then
+	check_failed=1
+fi
+
+if [ $# -eq "0" -o "$1" = "-h" -o $check_failed -eq 1 ] 
+then
+	echo "usage:" 
+	echo "	wltar -h        call help."
+	echo "	wltar [source dir] [package name]"
+	echo "	wltar [source file] [package name]"
+	exit 0
+fi
+
+## get package name 
+if [ $2 = "" ]
+then 
+	package_name="default.tar.gz"
+else
+	package_name=$2
+fi
+# package name ..
+package="${package_dir}${package_name}"
+echo "create pacakge : ${package}"
+
+mkdir -p ${package_dir}
+
+if [ -f $1 ]
+then
+	target_file=`basename $1`
+	gbk_file_name=`echo "${target_file}" | iconv -f UTF-8 -t GB2312 `	
+	echo "convert: "${gbk_file_name}
+	gbk_file="${package_dir}${gbk_file_name}" 
+	cp -fr "${target_file}" "${gbk_file}" 
+
+	tar -cf "${package}" "$gbk_file" 
+	echo "package done: ${package}"
+	
+	exit 0
+fi
+
+tmp_file_list="${package_dir}modifylist.tmp"
+file_list="${package_dir}modifylist"
+echo "" > ${file_list}
+echo "" > ${tmp_file_list}
+
+if [ -d $1 ]
+then
+	target_dir=$1
+	find ${target_dir} -name "*" > "${file_list}"
+	while read line
+	do
+		if [ -d "${line}" -o ! -f "${line}" ]
+		then 
+			continue
+		fi
+	
+		target_file=`basename $line`	
+		gbk_file_name=`echo "${target_file}" | iconv -f UTF-8 -t GB2312`
+		echo "convert: "${target_file}
+		gbk_file="${package_dir}${gbk_file_name}"
+		cp -fr "${target_file}" "${gbk_file}"
+		
+		echo "${gbk_file}" >> "${file_list}"
+	done < "${tmp_file_list}"
+
+	tar -cf "${package}" -T "${file_list}"
+	echo "package done: ${package}"
+
+	exit 0
+fi
+
+
+

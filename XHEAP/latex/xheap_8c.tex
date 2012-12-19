@@ -1,0 +1,136 @@
+\hypertarget{xheap_8c}{\section{xheap.\-c File Reference}
+\label{xheap_8c}\index{xheap.\-c@{xheap.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}xheap.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../\-Jlog.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{xheap_8c_a9771cabfd673a8e350f1f8ce0b8f458f}{\#define {\bfseries D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-I\-Z\-E}~(32)}\label{xheap_8c_a9771cabfd673a8e350f1f8ce0b8f458f}
+
+\item 
+\#define {\bfseries S\-A\-F\-E\-\_\-\-F\-R\-E\-E}(p)
+\item 
+\#define {\bfseries swap}(a, b)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{xheap_8c_acc98ce04ac258675cb2d7e76b5a5a817}{void $\ast$ {\bfseries zeromalloc} (unsigned int size)}\label{xheap_8c_acc98ce04ac258675cb2d7e76b5a5a817}
+
+\item 
+\hypertarget{xheap_8c_abafeaf4a44227422f44dfb14581ccfff}{int {\bfseries default\-\_\-cmp\-\_\-func} (void $\ast$a, void $\ast$b)}\label{xheap_8c_abafeaf4a44227422f44dfb14581ccfff}
+
+\item 
+\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$ \hyperlink{xheap_8c_a4b674198dfd77a3d71273e1de3fdec7c}{heap\-\_\-create} (\hyperlink{xheap_8h_a37a557331e18cb3bf6ae46bf825cf603}{cmp\-\_\-func\-\_\-t} cmpfunc, unsigned int heap\-\_\-size)
+\begin{DoxyCompactList}\small\item\em create function, get a heap, big/small root, depends on you. default is the small one. \end{DoxyCompactList}\item 
+void \hyperlink{xheap_8c_af575dc3eccbbf71f0c40314490bf6910}{heap\-\_\-destroy} (\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$pheap)
+\begin{DoxyCompactList}\small\item\em destroy the heap. \end{DoxyCompactList}\item 
+int \hyperlink{xheap_8c_a8760cfee59102365ea957674b01528fd}{heap\-\_\-push} (\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$pheap, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em push a value into the heap. \end{DoxyCompactList}\item 
+int \hyperlink{xheap_8c_a142ae7692f55720791655cd317e55c87}{heap\-\_\-pop} (\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$pheap, void $\ast$$\ast$data)
+\begin{DoxyCompactList}\small\item\em get the max/min value \end{DoxyCompactList}\item 
+\hypertarget{xheap_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{int {\bfseries main} ()}\label{xheap_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+wzj 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+\begin{DoxyDate}{Date}
+\-: 2012年08月01日星期三22\-:27\-:52
+\end{DoxyDate}
+discript your detail info. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{xheap_8c_a92ef8a0b263204c1931f670b8efda546}{\index{xheap.\-c@{xheap.\-c}!S\-A\-F\-E\-\_\-\-F\-R\-E\-E@{S\-A\-F\-E\-\_\-\-F\-R\-E\-E}}
+\index{S\-A\-F\-E\-\_\-\-F\-R\-E\-E@{S\-A\-F\-E\-\_\-\-F\-R\-E\-E}!xheap.c@{xheap.\-c}}
+\subsubsection[{S\-A\-F\-E\-\_\-\-F\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-A\-F\-E\-\_\-\-F\-R\-E\-E(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{xheap_8c_a92ef8a0b263204c1931f670b8efda546}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if}(p)   \{       \(\backslash\)
+                        free(p), p = NULL;      \(\backslash\)
+                \}
+\end{DoxyCode}
+\hypertarget{xheap_8c_a3ca5ecd34b04d6a243c054ac3a57f68d}{\index{xheap.\-c@{xheap.\-c}!swap@{swap}}
+\index{swap@{swap}!xheap.c@{xheap.\-c}}
+\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}\#define swap(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)}}\label{xheap_8c_a3ca5ecd34b04d6a243c054ac3a57f68d}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{     \(\backslash\)
+                void* tmp = a;  \(\backslash\)
+                        a = b;          \(\backslash\)
+                        b = tmp;        \(\backslash\)
+                \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{xheap_8c_a4b674198dfd77a3d71273e1de3fdec7c}{\index{xheap.\-c@{xheap.\-c}!heap\-\_\-create@{heap\-\_\-create}}
+\index{heap\-\_\-create@{heap\-\_\-create}!xheap.c@{xheap.\-c}}
+\subsubsection[{heap\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf xheap\-\_\-st}$\ast$ heap\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{{\bf cmp\-\_\-func\-\_\-t}}]{cmpfunc, }
+\item[{unsigned int}]{heap\-\_\-size}
+\end{DoxyParamCaption}
+)}}\label{xheap_8c_a4b674198dfd77a3d71273e1de3fdec7c}
+
+
+create function, get a heap, big/small root, depends on you. default is the small one. 
+
+take care the cmpfunc \hypertarget{xheap_8c_af575dc3eccbbf71f0c40314490bf6910}{\index{xheap.\-c@{xheap.\-c}!heap\-\_\-destroy@{heap\-\_\-destroy}}
+\index{heap\-\_\-destroy@{heap\-\_\-destroy}!xheap.c@{xheap.\-c}}
+\subsubsection[{heap\-\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}void heap\-\_\-destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf xheap\-\_\-st} $\ast$}]{pheap}
+\end{DoxyParamCaption}
+)}}\label{xheap_8c_af575dc3eccbbf71f0c40314490bf6910}
+
+
+destroy the heap. 
+
+destroy the heap \hypertarget{xheap_8c_a142ae7692f55720791655cd317e55c87}{\index{xheap.\-c@{xheap.\-c}!heap\-\_\-pop@{heap\-\_\-pop}}
+\index{heap\-\_\-pop@{heap\-\_\-pop}!xheap.c@{xheap.\-c}}
+\subsubsection[{heap\-\_\-pop}]{\setlength{\rightskip}{0pt plus 5cm}int heap\-\_\-pop (
+\begin{DoxyParamCaption}
+\item[{{\bf xheap\-\_\-st} $\ast$}]{pheap, }
+\item[{void $\ast$$\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{xheap_8c_a142ae7692f55720791655cd317e55c87}
+
+
+get the max/min value 
+
+pop the root; \hypertarget{xheap_8c_a8760cfee59102365ea957674b01528fd}{\index{xheap.\-c@{xheap.\-c}!heap\-\_\-push@{heap\-\_\-push}}
+\index{heap\-\_\-push@{heap\-\_\-push}!xheap.c@{xheap.\-c}}
+\subsubsection[{heap\-\_\-push}]{\setlength{\rightskip}{0pt plus 5cm}int heap\-\_\-push (
+\begin{DoxyParamCaption}
+\item[{{\bf xheap\-\_\-st} $\ast$}]{pheap, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{xheap_8c_a8760cfee59102365ea957674b01528fd}
+
+
+push a value into the heap. 
+
+push in an value 

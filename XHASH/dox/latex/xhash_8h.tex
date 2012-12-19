@@ -1,0 +1,199 @@
+\hypertarget{xhash_8h}{\section{xhash.\-h File Reference}
+\label{xhash_8h}\index{xhash.\-h@{xhash.\-h}}
+}
+
+
+xhash head  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__hash__node__st}{\-\_\-hash\-\_\-node\-\_\-st}
+\item 
+struct \hyperlink{struct__hash__table__st}{\-\_\-hash\-\_\-table\-\_\-st}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int($\ast$ \hyperlink{xhash_8h_a3f97bf462ddb7a555d27c2babbd0b14e}{hash\-\_\-func\-\_\-t} )(void $\ast$key, unsigned int klen)
+\item 
+typedef int($\ast$ \hyperlink{xhash_8h_a36c92a8aaf906f8b7d0f3521cc0b19eb}{destroy\-\_\-func\-\_\-t} )(void $\ast$data)
+\item 
+typedef struct \hyperlink{struct__hash__node__st}{\-\_\-hash\-\_\-node\-\_\-st} \hyperlink{xhash_8h_aa850c879d934db20a01d0be773a30017}{hash\-\_\-node\-\_\-st}
+\item 
+typedef struct \hyperlink{struct__hash__table__st}{\-\_\-hash\-\_\-table\-\_\-st} \hyperlink{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}{hash\-\_\-table\-\_\-st}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}{hash\-\_\-table\-\_\-st} $\ast$ \hyperlink{xhash_8h_a1265468e5732be922ec0d56757e980eb}{hash\-\_\-create} (\hyperlink{xhash_8h_a3f97bf462ddb7a555d27c2babbd0b14e}{hash\-\_\-func\-\_\-t} hash\-\_\-func, \hyperlink{xhash_8h_a36c92a8aaf906f8b7d0f3521cc0b19eb}{destroy\-\_\-func\-\_\-t} destroy)
+\begin{DoxyCompactList}\small\item\em create a hash table \end{DoxyCompactList}\item 
+int \hyperlink{xhash_8h_ace3d90b51a3d0aa8047c8df8a4ad8f3b}{hash\-\_\-insert} (\hyperlink{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}{hash\-\_\-table\-\_\-st} $\ast$ptable, void $\ast$key, unsigned int klen, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em insert a key-\/value pair into the hash \end{DoxyCompactList}\item 
+void \hyperlink{xhash_8h_a9739583ebb9538e164cf27ea3c6cdd85}{hash\-\_\-delete} (\hyperlink{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}{hash\-\_\-table\-\_\-st} $\ast$ptable, void $\ast$key, unsigned int klen)
+\begin{DoxyCompactList}\small\item\em delete a key from the hashtable, and destroy the hash node and its value \end{DoxyCompactList}\item 
+int \hyperlink{xhash_8h_ad72eefbd9171df19c4af0b4aff0785bb}{hash\-\_\-search} (\hyperlink{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}{hash\-\_\-table\-\_\-st} $\ast$ptable, void $\ast$key, unsigned int klen, void $\ast$$\ast$data)
+\begin{DoxyCompactList}\small\item\em get the item from the hash table. \end{DoxyCompactList}\item 
+void \hyperlink{xhash_8h_a913812ff962e1b630a17958748a88c9f}{hash\-\_\-destroy} (\hyperlink{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}{hash\-\_\-table\-\_\-st} $\ast$ptable)
+\begin{DoxyCompactList}\small\item\em delete all the hash table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+xhash head \begin{DoxyAuthor}{Author}
+wzj 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-1 
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+\begin{DoxyDate}{Date}
+\-: 2012年07月31日星期二22\-:26\-:23
+\end{DoxyDate}
+discript your detail info. 
+
+\subsection{Typedef Documentation}
+\hypertarget{xhash_8h_a36c92a8aaf906f8b7d0f3521cc0b19eb}{\index{xhash.\-h@{xhash.\-h}!destroy\-\_\-func\-\_\-t@{destroy\-\_\-func\-\_\-t}}
+\index{destroy\-\_\-func\-\_\-t@{destroy\-\_\-func\-\_\-t}!xhash.h@{xhash.\-h}}
+\subsubsection[{destroy\-\_\-func\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ destroy\-\_\-func\-\_\-t)(void $\ast$data)}}\label{xhash_8h_a36c92a8aaf906f8b7d0f3521cc0b19eb}
+if you use it, hash table will help you free memory. \hypertarget{xhash_8h_a3f97bf462ddb7a555d27c2babbd0b14e}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-func\-\_\-t@{hash\-\_\-func\-\_\-t}}
+\index{hash\-\_\-func\-\_\-t@{hash\-\_\-func\-\_\-t}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-func\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned int($\ast$ hash\-\_\-func\-\_\-t)(void $\ast$key, unsigned int klen)}}\label{xhash_8h_a3f97bf462ddb7a555d27c2babbd0b14e}
+show your better hash func. \hypertarget{xhash_8h_aa850c879d934db20a01d0be773a30017}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-node\-\_\-st@{hash\-\_\-node\-\_\-st}}
+\index{hash\-\_\-node\-\_\-st@{hash\-\_\-node\-\_\-st}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-node\-\_\-st}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-hash\-\_\-node\-\_\-st} {\bf hash\-\_\-node\-\_\-st}}}\label{xhash_8h_aa850c879d934db20a01d0be773a30017}
+There is no hash slot just head and node. \hypertarget{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-table\-\_\-st@{hash\-\_\-table\-\_\-st}}
+\index{hash\-\_\-table\-\_\-st@{hash\-\_\-table\-\_\-st}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-table\-\_\-st}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-hash\-\_\-table\-\_\-st} {\bf hash\-\_\-table\-\_\-st}}}\label{xhash_8h_a53f906ccd89ca2c9e30099bb99a4d268}
+this struct is the hash table main, 
+
+\subsection{Function Documentation}
+\hypertarget{xhash_8h_a1265468e5732be922ec0d56757e980eb}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-create@{hash\-\_\-create}}
+\index{hash\-\_\-create@{hash\-\_\-create}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hash\-\_\-table\-\_\-st}$\ast$ hash\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{{\bf hash\-\_\-func\-\_\-t}}]{hash\-\_\-func, }
+\item[{{\bf destroy\-\_\-func\-\_\-t}}]{destroy}
+\end{DoxyParamCaption}
+)}}\label{xhash_8h_a1265468e5732be922ec0d56757e980eb}
+
+
+create a hash table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hash\-\_\-func} & self defined hash function. \\
+\hline
+\mbox{\tt in}  & {\em destroy} & when you call the hash\-\_\-delete/hash\-\_\-destroy, it will free all the values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\-U\-L\-L create failed 
+
+!\-N\-U\-L\-L a hash table can be used
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{xhash_8h_a9739583ebb9538e164cf27ea3c6cdd85}{hash\-\_\-delete} 
+
+\hyperlink{xhash_8h_a913812ff962e1b630a17958748a88c9f}{hash\-\_\-destroy} 
+\end{DoxySeeAlso}
+\hypertarget{xhash_8h_a9739583ebb9538e164cf27ea3c6cdd85}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-delete@{hash\-\_\-delete}}
+\index{hash\-\_\-delete@{hash\-\_\-delete}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}void hash\-\_\-delete (
+\begin{DoxyParamCaption}
+\item[{{\bf hash\-\_\-table\-\_\-st} $\ast$}]{ptable, }
+\item[{void $\ast$}]{key, }
+\item[{unsigned int}]{klen}
+\end{DoxyParamCaption}
+)}}\label{xhash_8h_a9739583ebb9538e164cf27ea3c6cdd85}
+
+
+delete a key from the hashtable, and destroy the hash node and its value 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ptable} & \\
+\hline
+\mbox{\tt in}  & {\em key} & \\
+\hline
+\mbox{\tt in}  & {\em klen} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{xhash_8h_a913812ff962e1b630a17958748a88c9f}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-destroy@{hash\-\_\-destroy}}
+\index{hash\-\_\-destroy@{hash\-\_\-destroy}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}void hash\-\_\-destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf hash\-\_\-table\-\_\-st} $\ast$}]{ptable}
+\end{DoxyParamCaption}
+)}}\label{xhash_8h_a913812ff962e1b630a17958748a88c9f}
+
+
+delete all the hash table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptable} & hash table to be destroy \\
+\hline
+\end{DoxyParams}
+\hypertarget{xhash_8h_ace3d90b51a3d0aa8047c8df8a4ad8f3b}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-insert@{hash\-\_\-insert}}
+\index{hash\-\_\-insert@{hash\-\_\-insert}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-insert}]{\setlength{\rightskip}{0pt plus 5cm}int hash\-\_\-insert (
+\begin{DoxyParamCaption}
+\item[{{\bf hash\-\_\-table\-\_\-st} $\ast$}]{ptable, }
+\item[{void $\ast$}]{key, }
+\item[{unsigned int}]{klen, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{xhash_8h_ace3d90b51a3d0aa8047c8df8a4ad8f3b}
+
+
+insert a key-\/value pair into the hash 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em \mbox{[}in$|$out\mbox{]}} & ptable main hash table... \\
+\hline
+\mbox{\tt in}  & {\em key} & to locate a place in the table \\
+\hline
+\mbox{\tt in}  & {\em klen} & the key len \\
+\hline
+\mbox{\tt in}  & {\em data} & the stored value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 sucess 
+
+!0 failed 
+\end{DoxyReturn}
+\hypertarget{xhash_8h_ad72eefbd9171df19c4af0b4aff0785bb}{\index{xhash.\-h@{xhash.\-h}!hash\-\_\-search@{hash\-\_\-search}}
+\index{hash\-\_\-search@{hash\-\_\-search}!xhash.h@{xhash.\-h}}
+\subsubsection[{hash\-\_\-search}]{\setlength{\rightskip}{0pt plus 5cm}int hash\-\_\-search (
+\begin{DoxyParamCaption}
+\item[{{\bf hash\-\_\-table\-\_\-st} $\ast$}]{ptable, }
+\item[{void $\ast$}]{key, }
+\item[{unsigned int}]{klen, }
+\item[{void $\ast$$\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{xhash_8h_ad72eefbd9171df19c4af0b4aff0785bb}
+
+
+get the item from the hash table. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ptable} & \\
+\hline
+\mbox{\tt in}  & {\em key} & \\
+\hline
+\mbox{\tt in}  & {\em klen} & \\
+\hline
+ & {\em \mbox{[}in$|$out\mbox{]}} & data if find the values, we use the data to return the value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 sucess 
+
+!0 failed 
+\end{DoxyReturn}

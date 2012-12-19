@@ -1,0 +1,180 @@
+/**
+ * \file gelf.c
+ * \author  wzj
+ * \brief 
+ * \version 
+ * \note  
+ * \date: 2012年08月27日星期一21:56:05
+ */ 
+/*
+* gelf.c (2004)
+* written by grip2 <gript2@hotmail.com>
+*/
+
+#include <elf.h>
+#include <link.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+#include "gelf.h"
+#include "gptrace.h"
+
+#define IMAGE_ADDR 0x08048000
+
+static struct link_map * get_linkmap(pid_t pid)
+{
+Elf32_Ehdr *ehdr = (Elf32_Ehdr *) malloc(sizeof(Elf32_Ehdr));
+Elf32_Phdr *phdr = (Elf32_Phdr *) malloc(sizeof(Elf32_Phdr));
+Elf32_Dyn *dyn = (Elf32_Dyn *) malloc(sizeof(Elf32_Dyn));
+Elf32_Word got;
+unsigned long phdr_addr,dyn_addr,map_addr;
+struct link_map *map = (struct link_map *) malloc(sizeof(struct link_map));
+int i = 0;
+
+ptrace_read(pid, IMAGE_ADDR, ehdr, sizeof(Elf32_Ehdr));
+phdr_addr = IMAGE_ADDR + ehdr->e_phoff;
+
+ptrace_read(pid, phdr_addr, phdr, sizeof(Elf32_Phdr));
+while(phdr->p_type != PT_DYNAMIC)
+ptrace_read(pid, phdr_addr += sizeof(Elf32_Phdr), phdr, sizeof(Elf32_Phdr));
+dyn_addr = phdr->p_vaddr;
+
+ptrace_read(pid, dyn_addr, dyn, sizeof(Elf32_Dyn));
+while(dyn->d_tag != DT_PLTGOT) {
+ptrace_read(pid, dyn_addr + i * sizeof(Elf32_Dyn), dyn, sizeof(Elf32_Dyn));
+i++;
+}
+
+got = (Elf32_Word) dyn->d_un.d_ptr;
+got += 4;
+
+ptrace_read(pid, got, &map_addr, 4);
+ptrace_read(pid, map_addr, map, sizeof(struct link_map));
+
+free(ehdr);
+free(phdr);
+free(dyn);
+return map;
+}
+
+int print_sharelib_runtime(pid_t pid)
+{
+struct link_map *lm = (struct link_map *) malloc(sizeof(struct link_map));
+char *str;
+
+printf("-------- runtime process --------\n");
+printf("PROCESS ID: [%d]\n", pid);
+
+lm = get_linkmap(pid);
+if (!lm) return -1;
+
+#if 0
+str = ptrace_readstr(pid, (unsigned long) lm->l_name);
+printf("[%s]\n", str);
+free(str);
+#endif
+
+if (!lm->l_next) return -1;
+
+ptrace_read(pid, (unsigned long) lm->l_next, lm, sizeof(struct link_map));
+while(lm->l_next) {
+ptrace_read(pid, (unsigned long) lm->l_next, lm, sizeof(struct link_map));
+
+str = ptrace_readstr(pid, (unsigned long) lm->l_name);
+printf("[%s]\n", str);
+free(str);
+}
+
+printf("------------ end ------------\n");
+return 0;
+}
+
+int print_sharelib(char *filename)
+{
+Elf32_Ehdr *ehdr = (Elf32_Ehdr *) malloc(sizeof(Elf32_Ehdr));
+Elf32_Phdr *phdr = (Elf32_Phdr *) malloc(sizeof(Elf32_Phdr));
+Elf32_Dyn *dyn = (Elf32_Dyn *) malloc(sizeof(Elf32_Dyn));
+Elf32_Addr strtab = 0;
+unsigned int needed[64];
+int needed_count = 0;
+char str[1024];
+int fd = -1;
+int i, res;
+unsigned long dyn_segment_offset = 0;
+unsigned long interp_segment_offset = 0;
+
+printf("---------- binary file ----------\n");
+printf("BINARY FILE: [%s]\n", filename);
+
+fd = open(filename, O_RDONLY);
+if (fd == -1) {
+perror(filename);
+goto err;
+}
+
+read(fd, ehdr, sizeof(Elf32_Ehdr));
+
+lseek(fd, ehdr->e_phoff, SEEK_SET);
+for (i = 0; i < ehdr->e_phnum; i++) {
+read(fd, phdr, sizeof(Elf32_Phdr));
+if (phdr->p_type == PT_INTERP) {
+interp_segment_offset = phdr->p_offset;
+}
+else if (phdr->p_type == PT_DYNAMIC) {
+dyn_segment_offset = phdr->p_offset;
+}
+}
+
+/* dynamic segment */
+lseek(fd, dyn_segment_offset, SEEK_SET);
+res = read(fd, dyn, sizeof(Elf32_Dyn));
+while(res == sizeof(Elf32_Dyn) && dyn->d_tag) {
+switch (dyn->d_tag) {
+case DT_NEEDED:
+if (needed_count < sizeof(needed)/sizeof(needed[0]))
+needed[needed_count++] = dyn->d_un.d_val;
+else
+fprintf(stderr, "[** ALERT] Too many sharelib!\n");
+break;
+case DT_STRTAB:
+strtab = dyn->d_un.d_ptr;
+break;
+default:
+break;
+}
+
+res = read(fd, dyn, sizeof(Elf32_Dyn));
+}
+
+for (i = 0; i < needed_count; i++) {
+lseek(fd, strtab-IMAGE_ADDR+needed[i], SEEK_SET);
+res = read(fd, str, sizeof(str)-1);
+if (res > 0) {
+str[res] ='\0';
+printf("[%s]\n", str);
+}
+}
+
+/* interpreter segment */
+lseek(fd, interp_segment_offset, SEEK_SET);
+res = read(fd, str, sizeof(str)-1);
+if (res > 0) {
+str[res] ='\0';
+printf("[%s]\n", str);
+}
+
+free(ehdr);
+free(phdr);
+free(dyn);
+close(fd);
+printf("------------ end ------------\n");
+return 0;
+err:
+if (fd != -1)
+close(fd);
+printf("------------ end ------------\n");
+return -1;
+}
+

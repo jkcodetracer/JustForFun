@@ -1,0 +1,17 @@
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+struct stat fs;
+
+stat("/aff/ff/f", &fs);
+
+socket(AF_INET, SOCK_DGRAM, 0);
+
+struct timeval tm
+setsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, &tm, sizeof(&tm));
+
+
+

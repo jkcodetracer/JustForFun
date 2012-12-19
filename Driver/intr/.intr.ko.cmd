@@ -1,0 +1,1 @@
+cmd_/home/joker/JustForFun/Driver/intr/intr.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-2.6.32-40-generic/scripts/module-common.lds --build-id -o /home/joker/JustForFun/Driver/intr/intr.ko /home/joker/JustForFun/Driver/intr/intr.o /home/joker/JustForFun/Driver/intr/intr.mod.o

@@ -1,0 +1,147 @@
+\hypertarget{xheap_8h}{\section{xheap.\-h File Reference}
+\label{xheap_8h}\index{xheap.\-h@{xheap.\-h}}
+}
+
+
+copy? from sangfor, writen by wxc  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__xheap__st}{\-\_\-xheap\-\_\-st}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int($\ast$ \hyperlink{xheap_8h_a37a557331e18cb3bf6ae46bf825cf603}{cmp\-\_\-func\-\_\-t} )(void $\ast$, void $\ast$)
+\item 
+typedef struct \hyperlink{struct__xheap__st}{\-\_\-xheap\-\_\-st} \hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$ \hyperlink{xheap_8h_a4b674198dfd77a3d71273e1de3fdec7c}{heap\-\_\-create} (\hyperlink{xheap_8h_a37a557331e18cb3bf6ae46bf825cf603}{cmp\-\_\-func\-\_\-t} cmpfunc, unsigned int heap\-\_\-size)
+\begin{DoxyCompactList}\small\item\em create function, get a heap, big/small root, depends on you. default is the small one. \end{DoxyCompactList}\item 
+void \hyperlink{xheap_8h_af575dc3eccbbf71f0c40314490bf6910}{heap\-\_\-destroy} (\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$pheap)
+\begin{DoxyCompactList}\small\item\em destroy the heap. \end{DoxyCompactList}\item 
+int \hyperlink{xheap_8h_a8760cfee59102365ea957674b01528fd}{heap\-\_\-push} (\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$pheap, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em push a value into the heap. \end{DoxyCompactList}\item 
+int \hyperlink{xheap_8h_a142ae7692f55720791655cd317e55c87}{heap\-\_\-pop} (\hyperlink{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{xheap\-\_\-st} $\ast$pheap, void $\ast$$\ast$data)
+\begin{DoxyCompactList}\small\item\em get the max/min value \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+copy? from sangfor, writen by wxc \begin{DoxyAuthor}{Author}
+wzj 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+simple heap, you can use it as a little root/big root heap. 
+\end{DoxyNote}
+\begin{DoxyDate}{Date}
+\-: 2012年08月01日星期三22\-:27\-:56 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{xheap_8h_a37a557331e18cb3bf6ae46bf825cf603}{\index{xheap.\-h@{xheap.\-h}!cmp\-\_\-func\-\_\-t@{cmp\-\_\-func\-\_\-t}}
+\index{cmp\-\_\-func\-\_\-t@{cmp\-\_\-func\-\_\-t}!xheap.h@{xheap.\-h}}
+\subsubsection[{cmp\-\_\-func\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ cmp\-\_\-func\-\_\-t)(void $\ast$, void $\ast$)}}\label{xheap_8h_a37a557331e18cb3bf6ae46bf825cf603}
+self define compare function, if you want to get a big heap, return the '$>$' result. Otherwise, it turns to a little heap. \hypertarget{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}{\index{xheap.\-h@{xheap.\-h}!xheap\-\_\-st@{xheap\-\_\-st}}
+\index{xheap\-\_\-st@{xheap\-\_\-st}!xheap.h@{xheap.\-h}}
+\subsubsection[{xheap\-\_\-st}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-xheap\-\_\-st} {\bf xheap\-\_\-st}}}\label{xheap_8h_a8c9b1643ec200093628af7b6f3e7cb2e}
+The main struct, heap struct. 
+
+\subsection{Function Documentation}
+\hypertarget{xheap_8h_a4b674198dfd77a3d71273e1de3fdec7c}{\index{xheap.\-h@{xheap.\-h}!heap\-\_\-create@{heap\-\_\-create}}
+\index{heap\-\_\-create@{heap\-\_\-create}!xheap.h@{xheap.\-h}}
+\subsubsection[{heap\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf xheap\-\_\-st}$\ast$ heap\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{{\bf cmp\-\_\-func\-\_\-t}}]{cmpfunc, }
+\item[{unsigned int}]{heap\-\_\-size}
+\end{DoxyParamCaption}
+)}}\label{xheap_8h_a4b674198dfd77a3d71273e1de3fdec7c}
+
+
+create function, get a heap, big/small root, depends on you. default is the small one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmpfunc} & if the bigger one return 1, it is the big heap. default is the small heap. \\
+\hline
+{\em heap\-\_\-size} & the heap length. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\-U\-L\-L failed. 
+
+!\-N\-U\-L\-L success you get a heap.
+\end{DoxyReturn}
+take care the cmpfunc \hypertarget{xheap_8h_af575dc3eccbbf71f0c40314490bf6910}{\index{xheap.\-h@{xheap.\-h}!heap\-\_\-destroy@{heap\-\_\-destroy}}
+\index{heap\-\_\-destroy@{heap\-\_\-destroy}!xheap.h@{xheap.\-h}}
+\subsubsection[{heap\-\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}void heap\-\_\-destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf xheap\-\_\-st} $\ast$}]{pheap}
+\end{DoxyParamCaption}
+)}}\label{xheap_8h_af575dc3eccbbf71f0c40314490bf6910}
+
+
+destroy the heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pheap} & the sorrow heap you'll release.\\
+\hline
+\end{DoxyParams}
+destroy the heap \hypertarget{xheap_8h_a142ae7692f55720791655cd317e55c87}{\index{xheap.\-h@{xheap.\-h}!heap\-\_\-pop@{heap\-\_\-pop}}
+\index{heap\-\_\-pop@{heap\-\_\-pop}!xheap.h@{xheap.\-h}}
+\subsubsection[{heap\-\_\-pop}]{\setlength{\rightskip}{0pt plus 5cm}int heap\-\_\-pop (
+\begin{DoxyParamCaption}
+\item[{{\bf xheap\-\_\-st} $\ast$}]{pheap, }
+\item[{void $\ast$$\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{xheap_8h_a142ae7692f55720791655cd317e55c87}
+
+
+get the max/min value 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em pheap} & main heap struct \\
+\hline
+\mbox{\tt out}  & {\em data} & if you pop one, it's value stored here \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 success. 
+
+!0 failed
+\end{DoxyReturn}
+pop the root; \hypertarget{xheap_8h_a8760cfee59102365ea957674b01528fd}{\index{xheap.\-h@{xheap.\-h}!heap\-\_\-push@{heap\-\_\-push}}
+\index{heap\-\_\-push@{heap\-\_\-push}!xheap.h@{xheap.\-h}}
+\subsubsection[{heap\-\_\-push}]{\setlength{\rightskip}{0pt plus 5cm}int heap\-\_\-push (
+\begin{DoxyParamCaption}
+\item[{{\bf xheap\-\_\-st} $\ast$}]{pheap, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{xheap_8h_a8760cfee59102365ea957674b01528fd}
+
+
+push a value into the heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pheap} & main heap struct \\
+\hline
+{\em data} & the target value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 success 
+
+!0 failed
+\end{DoxyReturn}
+push in an value 

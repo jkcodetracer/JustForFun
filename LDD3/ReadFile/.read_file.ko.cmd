@@ -1,0 +1,1 @@
+cmd_/home/joker/JustForFun/LDD3/ReadFile/read_file.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-2.6.32-40-generic/scripts/module-common.lds --build-id -o /home/joker/JustForFun/LDD3/ReadFile/read_file.ko /home/joker/JustForFun/LDD3/ReadFile/read_file.o /home/joker/JustForFun/LDD3/ReadFile/read_file.mod.o

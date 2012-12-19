@@ -1,0 +1,51 @@
+\hypertarget{struct__hash__table__st}{\section{\-\_\-hash\-\_\-table\-\_\-st Struct Reference}
+\label{struct__hash__table__st}\index{\-\_\-hash\-\_\-table\-\_\-st@{\-\_\-hash\-\_\-table\-\_\-st}}
+}
+
+
+{\ttfamily \#include $<$xhash.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{xhash_8h_aa850c879d934db20a01d0be773a30017}{hash\-\_\-node\-\_\-st} $\ast$$\ast$ \hyperlink{struct__hash__table__st_a51f98610ce851ad0e56d06b21531155f}{slot}
+\item 
+unsigned int \hyperlink{struct__hash__table__st_afbb7851b13839f24ad916e2a2114255f}{slots}
+\item 
+unsigned int \hyperlink{struct__hash__table__st_a043f42228ea0b4b5b5c5a27c0d407583}{size}
+\item 
+unsigned int \hyperlink{struct__hash__table__st_a5eadfd390197f22e359fd73c336795d3}{nodes}
+\item 
+\hyperlink{xhash_8h_a3f97bf462ddb7a555d27c2babbd0b14e}{hash\-\_\-func\-\_\-t} \hyperlink{struct__hash__table__st_a92de25b041a2a7ee7207469b6a8634e4}{hash\-\_\-func}
+\item 
+\hyperlink{xhash_8h_a36c92a8aaf906f8b7d0f3521cc0b19eb}{destroy\-\_\-func\-\_\-t} \hyperlink{struct__hash__table__st_aa6a42a3b0b637bb4d9a74f27e19c713f}{destroy}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+this struct is the hash table main, 
+
+\subsection{Member Data Documentation}
+\hypertarget{struct__hash__table__st_aa6a42a3b0b637bb4d9a74f27e19c713f}{\index{\-\_\-hash\-\_\-table\-\_\-st@{\-\_\-hash\-\_\-table\-\_\-st}!destroy@{destroy}}
+\index{destroy@{destroy}!_hash_table_st@{\-\_\-hash\-\_\-table\-\_\-st}}
+\subsubsection[{destroy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf destroy\-\_\-func\-\_\-t} \-\_\-hash\-\_\-table\-\_\-st\-::destroy}}\label{struct__hash__table__st_aa6a42a3b0b637bb4d9a74f27e19c713f}
+it can be null. \hypertarget{struct__hash__table__st_a92de25b041a2a7ee7207469b6a8634e4}{\index{\-\_\-hash\-\_\-table\-\_\-st@{\-\_\-hash\-\_\-table\-\_\-st}!hash\-\_\-func@{hash\-\_\-func}}
+\index{hash\-\_\-func@{hash\-\_\-func}!_hash_table_st@{\-\_\-hash\-\_\-table\-\_\-st}}
+\subsubsection[{hash\-\_\-func}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hash\-\_\-func\-\_\-t} \-\_\-hash\-\_\-table\-\_\-st\-::hash\-\_\-func}}\label{struct__hash__table__st_a92de25b041a2a7ee7207469b6a8634e4}
+if it is null, it will get a default value. \hypertarget{struct__hash__table__st_a5eadfd390197f22e359fd73c336795d3}{\index{\-\_\-hash\-\_\-table\-\_\-st@{\-\_\-hash\-\_\-table\-\_\-st}!nodes@{nodes}}
+\index{nodes@{nodes}!_hash_table_st@{\-\_\-hash\-\_\-table\-\_\-st}}
+\subsubsection[{nodes}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-hash\-\_\-table\-\_\-st\-::nodes}}\label{struct__hash__table__st_a5eadfd390197f22e359fd73c336795d3}
+current nodes in the table. \hypertarget{struct__hash__table__st_a043f42228ea0b4b5b5c5a27c0d407583}{\index{\-\_\-hash\-\_\-table\-\_\-st@{\-\_\-hash\-\_\-table\-\_\-st}!size@{size}}
+\index{size@{size}!_hash_table_st@{\-\_\-hash\-\_\-table\-\_\-st}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-hash\-\_\-table\-\_\-st\-::size}}\label{struct__hash__table__st_a043f42228ea0b4b5b5c5a27c0d407583}
+total nodes number. \hypertarget{struct__hash__table__st_a51f98610ce851ad0e56d06b21531155f}{\index{\-\_\-hash\-\_\-table\-\_\-st@{\-\_\-hash\-\_\-table\-\_\-st}!slot@{slot}}
+\index{slot@{slot}!_hash_table_st@{\-\_\-hash\-\_\-table\-\_\-st}}
+\subsubsection[{slot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hash\-\_\-node\-\_\-st}$\ast$$\ast$ \-\_\-hash\-\_\-table\-\_\-st\-::slot}}\label{struct__hash__table__st_a51f98610ce851ad0e56d06b21531155f}
+the slot chain. \hypertarget{struct__hash__table__st_afbb7851b13839f24ad916e2a2114255f}{\index{\-\_\-hash\-\_\-table\-\_\-st@{\-\_\-hash\-\_\-table\-\_\-st}!slots@{slots}}
+\index{slots@{slots}!_hash_table_st@{\-\_\-hash\-\_\-table\-\_\-st}}
+\subsubsection[{slots}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int \-\_\-hash\-\_\-table\-\_\-st\-::slots}}\label{struct__hash__table__st_afbb7851b13839f24ad916e2a2114255f}
+the numbers of slot. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{xhash_8h}{xhash.\-h}\end{DoxyCompactItemize}

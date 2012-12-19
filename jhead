@@ -1,0 +1,37 @@
+#!/bin/sh
+CURPATH=`pwd`
+CURFILE=${CURPATH}/$1
+
+if [ ! -e $1 ]; then
+	touch ${CURFILE}
+else
+	exit 1
+fi
+
+if [ ! -f $1 ]; then
+	echo "you must input a file!"
+	exit 1
+fi
+
+echo "/*" >> ${CURFILE}
+echo " * @FileName: $1" >> ${CURFILE}
+echo " * @Author: wzj"  >> ${CURFILE}
+echo " * @Brief: "   >> ${CURFILE}
+echo " *  " >> ${CURFILE}
+echo " *  " >> ${CURFILE}
+echo " *  " >> ${CURFILE}
+echo " *  " >> ${CURFILE}
+echo " *  " >> ${CURFILE}
+echo " * @History: " >> ${CURFILE}
+echo " * " >> ${CURFILE}
+echo " * " >> ${CURFILE}
+echo " * " >> ${CURFILE}
+
+date | awk '{print  " * @Date: "$1 $2 $3 $4 $5}' >> ${CURFILE}
+
+echo " * " >> ${CURFILE}
+echo " */ " >> ${CURFILE}
+
+
+
+

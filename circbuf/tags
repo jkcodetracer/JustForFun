@@ -1,0 +1,73 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AR	Makefile	/^AR=ar$/;"	m
+CB_ALLREAD	lib/circbuf.h	46;"	d
+CB_BUF_READONLY	lib/circbuf.h	43;"	d
+CB_BUF_WRITEONLY	lib/circbuf.h	44;"	d
+CB_LASTIN	lib/circbuf.h	45;"	d
+CB_READ_INP	lib/circbuf.h	41;"	d
+CB_WRITE_INP	lib/circbuf.h	42;"	d
+CC	Makefile	/^CC=gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS=-Wall -pedantic -ansi -g$/;"	m
+CircularBuffer	lib/circbuf.h	/^struct CircularBuffer {$/;"	s
+CircularBuffer	lib/circbuf.h	/^typedef struct CircularBuffer CircularBuffer;$/;"	t	typeref:struct:CircularBuffer
+Getting started	doc/manual.tex	/^\\subsection{Getting started}$/;"	b
+HW_ENDPOINT_LINUX	lib/types.h	43;"	d
+Introduction	doc/manual.tex	/^\\section{Introduction}$/;"	s
+__CBUF_H_	lib/circbuf.h	32;"	d
+__EFS_TYPES_H__	lib/types.h	39;"	d
+buf	lib/circbuf.h	/^	euint8* buf;$/;"	m	struct:CircularBuffer
+buffer	app/hello-thread.c	/^euint8 buffer[5]; \/* 5 places in the FIFO *\/$/;"	v
+cb	app/hello-thread.c	/^CircularBuffer cb;$/;"	v
+cb_cancelReadPacket	lib/circbuf.c	/^void cb_cancelReadPacket(CircularBuffer *cb)$/;"	f
+cb_cancelWritePacket	lib/circbuf.c	/^void cb_cancelWritePacket(CircularBuffer *cb)$/;"	f
+cb_doneReadPacket	lib/circbuf.c	/^void cb_doneReadPacket(CircularBuffer *cb)$/;"	f
+cb_doneWritePacket	lib/circbuf.c	/^void cb_doneWritePacket(CircularBuffer *cb)$/;"	f
+cb_getAttr	lib/circbuf.c	/^euint8 cb_getAttr(CircularBuffer *cb,euint8 attribute)$/;"	f
+cb_init	lib/circbuf.c	/^void cb_init(CircularBuffer *cb, euint8* mem, euint32 numsectors, euint32 sectorsize)$/;"	f
+cb_lastPacketIsIn	lib/circbuf.c	/^void cb_lastPacketIsIn(CircularBuffer *cb)$/;"	f
+cb_lastPacketIsOut	lib/circbuf.c	/^void cb_lastPacketIsOut(CircularBuffer *cb)$/;"	f
+cb_moreComing	lib/circbuf.c	/^euint8 cb_moreComing(CircularBuffer *cb)$/;"	f
+cb_printStatus	lib/circbuf.c	/^void cb_printStatus(CircularBuffer *cb)$/;"	f
+cb_ptrToSector	lib/circbuf.c	/^euint32 cb_ptrToSector(CircularBuffer *cb,euint8* ptr)$/;"	f
+cb_readPacket	lib/circbuf.c	/^euint8* cb_readPacket(CircularBuffer *cb)$/;"	f
+cb_readyReading	lib/circbuf.c	/^euint8 cb_readyReading(CircularBuffer *cb)$/;"	f
+cb_sectorToPtr	lib/circbuf.c	/^euint8* cb_sectorToPtr(CircularBuffer *cb,euint32 sector)$/;"	f
+cb_setAttr	lib/circbuf.c	/^void cb_setAttr(CircularBuffer *cb,euint8 attribute,euint8 val)$/;"	f
+cb_writePacket	lib/circbuf.c	/^euint8* cb_writePacket(CircularBuffer *cb)$/;"	f
+eint16	lib/types.h	/^	typedef int eint16;$/;"	t
+eint16	lib/types.h	/^	typedef short eint16;$/;"	t
+eint32	lib/types.h	/^	typedef int eint32; $/;"	t
+eint32	lib/types.h	/^	typedef int eint32;$/;"	t
+eint32	lib/types.h	/^	typedef long eint32; $/;"	t
+eint8	lib/types.h	/^	typedef char eint8;$/;"	t
+esint16	lib/types.h	/^	typedef signed int esint16;$/;"	t
+esint16	lib/types.h	/^	typedef signed short esint16;$/;"	t
+esint32	lib/types.h	/^	typedef signed int esint32;$/;"	t
+esint32	lib/types.h	/^	typedef signed long esint32;$/;"	t
+esint8	lib/types.h	/^	typedef signed char esint8;$/;"	t
+euint16	lib/types.h	/^	typedef unsigned int euint16; $/;"	t
+euint16	lib/types.h	/^	typedef unsigned short euint16; $/;"	t
+euint16	lib/types.h	/^	typedef unsigned short euint16;$/;"	t
+euint32	lib/types.h	/^	typedef unsigned int euint32; $/;"	t
+euint32	lib/types.h	/^	typedef unsigned int euint32;$/;"	t
+euint32	lib/types.h	/^	typedef unsigned long euint32; $/;"	t
+euint32	lib/types.h	/^	typedef unsigned long euint32;$/;"	t
+euint8	lib/types.h	/^	typedef unsigned char euint8;$/;"	t
+main	app/hello-thread.c	/^int main()$/;"	f
+main	app/hello.c	/^int main()$/;"	f
+main	app/numbers.c	/^int main()$/;"	f
+numsectors	lib/circbuf.h	/^	euint32 numsectors;$/;"	m	struct:CircularBuffer
+readPointer	lib/circbuf.h	/^	euint32 readPointer,writePointer;$/;"	m	struct:CircularBuffer
+reading_thread	app/hello-thread.c	/^void* reading_thread(void *x)$/;"	f
+sectorsize	lib/circbuf.h	/^	euint32 sectorsize;$/;"	m	struct:CircularBuffer
+status	lib/circbuf.h	/^	euint8  status;$/;"	m	struct:CircularBuffer
+texttt cb _cancelWritePacket	doc/manual.tex	/^\\subsection*{\\texttt{cb\\_cancelWritePacket()}}$/;"	b
+texttt cb _doneWritePacket	doc/manual.tex	/^\\subsection*{\\texttt{cb\\_doneWritePacket()}}$/;"	b
+texttt cb _writePacket	doc/manual.tex	/^\\subsection*{\\texttt{cb\\_writePacket()}}$/;"	b
+writePointer	lib/circbuf.h	/^	euint32 readPointer,writePointer;$/;"	m	struct:CircularBuffer
+writing_thread	app/hello-thread.c	/^void* writing_thread(void *x)$/;"	f

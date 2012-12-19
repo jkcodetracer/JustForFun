@@ -1,0 +1,1 @@
+cmd_/home/joker/JustForFun/Driver/helloworld/helloworld.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-2.6.32-40-generic/scripts/module-common.lds --build-id -o /home/joker/JustForFun/Driver/helloworld/helloworld.ko /home/joker/JustForFun/Driver/helloworld/helloworld.o /home/joker/JustForFun/Driver/helloworld/helloworld.mod.o

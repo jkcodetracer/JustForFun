@@ -1,0 +1,1 @@
+gcc -DCTDEBUG -o xhash -I../ xhash.c -fprofile-arcs -ftest-coverage
