@@ -1,0 +1,63 @@
+/**
+ * \file calc_head.c
+ * \author  wzj
+ * \brief 
+ * \version 
+ * \note: calculator with the ast.  
+ * \date: 2013年02月27日星期三21:20:09
+ * 
+ */ 
+%{
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#include <Jlog.h>
+
+#include "calc_head.h"
+%}
+
+/* a strange bison type */
+%union{
+	struct ast *a;	
+	double d;
+}
+
+%token <d> NUMBER 	/* it means the NUMBER has the value--> d in the %union */	
+%token EOL
+
+%type <a> exp factor term	/* the symble "exp factor term" use the data type 'a' */
+
+%%
+/* rules 0 */
+calclist:
+| calclist exp EOL{
+	printf("= %4.4g\n", eval($2));
+	treefree($2);
+	printf("> ");
+}
+| calclist EOL{
+	printf("> ");
+}
+;
+/* rules 1 */
+exp: factor
+| exp '+' factor {$$ = newast('+', $1, $3);}
+| exp '-' factor {$$ = newast('-', $1, $3);}
+;
+
+/* higher level */
+factor: term
+| factor '*' term {$$ = newast('*', $1, $3);}
+| factor '/' term {$$ = newast('/', $1, $3);}
+;
+
+/* more... */
+term: NUMBER { $$ = newnum($1);}
+| '|' term { $$ = newast('|', $2, NULL);}
+| '(' exp ')' {$$ = $2;}
+| '-' term {$$ = newast('M', $2, NULL);}
+
+%%
+
+
