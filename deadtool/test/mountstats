@@ -1,0 +1,16 @@
+device rootfs mounted on / with fstype rootfs
+device none mounted on /sys with fstype sysfs
+device none mounted on /proc with fstype proc
+device none mounted on /dev with fstype devtmpfs
+device none mounted on /dev/pts with fstype devpts
+device /dev/sda6 mounted on /host with fstype fuseblk
+device /dev/loop0 mounted on / with fstype ext4
+device none mounted on /sys/fs/fuse/connections with fstype fusectl
+device none mounted on /sys/kernel/debug with fstype debugfs
+device none mounted on /sys/kernel/security with fstype securityfs
+device none mounted on /dev/shm with fstype tmpfs
+device none mounted on /var/run with fstype tmpfs
+device none mounted on /var/lock with fstype tmpfs
+device none mounted on /lib/init/rw with fstype tmpfs
+device binfmt_misc mounted on /proc/sys/fs/binfmt_misc with fstype binfmt_misc
+device gvfs-fuse-daemon mounted on /home/joker/.gvfs with fstype fuse.gvfs-fuse-daemon

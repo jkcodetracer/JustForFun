@@ -1,0 +1,15 @@
+15 20 0:0 / /sys rw,nosuid,nodev,noexec,relatime - sysfs none rw
+16 20 0:3 / /proc rw,nosuid,nodev,noexec,relatime - proc none rw
+17 20 0:5 / /dev rw,relatime - devtmpfs none rw,size=895380k,nr_inodes=217047,mode=755
+18 17 0:12 / /dev/pts rw,nosuid,noexec,relatime - devpts none rw,gid=5,mode=620,ptmxmode=000
+19 20 8:6 / /host rw,nosuid,nodev,relatime - fuseblk /dev/sda6 rw,user_id=0,group_id=0,allow_other,blksize=4096
+20 1 7:0 / / rw,relatime - ext4 /dev/loop0 rw,errors=remount-ro,barrier=1,data=ordered
+21 15 0:15 / /sys/fs/fuse/connections rw,relatime - fusectl none rw
+22 15 0:7 / /sys/kernel/debug rw,relatime - debugfs none rw
+23 15 0:10 / /sys/kernel/security rw,relatime - securityfs none rw
+24 17 0:16 / /dev/shm rw,nosuid,nodev,relatime - tmpfs none rw
+25 20 0:17 / /var/run rw,nosuid,relatime - tmpfs none rw,mode=755
+26 20 0:18 / /var/lock rw,nosuid,nodev,noexec,relatime - tmpfs none rw
+27 20 0:19 / /lib/init/rw rw,nosuid,relatime - tmpfs none rw,mode=755
+28 16 0:20 / /proc/sys/fs/binfmt_misc rw,nosuid,nodev,noexec,relatime - binfmt_misc binfmt_misc rw
+30 20 0:21 / /home/joker/.gvfs rw,nosuid,nodev,relatime - fuse.gvfs-fuse-daemon gvfs-fuse-daemon rw,user_id=1000,group_id=1000

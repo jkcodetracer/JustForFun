@@ -1,0 +1,5 @@
+message helloworld
+{
+	required int32 id = 1;
+	required int32 dd2 = 2;
+}

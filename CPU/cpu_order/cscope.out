@@ -1,0 +1,896 @@
+cscope 15 $HOME/JustForFun/cpu_order -q 0000000059 0000004888
+	@ordering.cpp
+
+3 
+	~<±h»ad.h
+>
+
+4 
+	~<£m­hÜe.h
+>
+
+5 
+	~<¡dio.h
+>
+
+6 
+	~<¡dlib.h
+>
+
+9 
+	#USE_CPU_FENCE
+ 0
+
+	)
+
+10 
+	#USE_SINGLE_HW_THREAD
+ 0
+
+11 
+
+	)
+
+12 #ià
+USE_SINGLE_HW_THREAD
+
+
+13 
+	~<sched.h
+>
+
+23 
+	#MT_IA
+ 397
+
+	)
+
+24 
+	#MT_LEN
+ 624
+
+	)
+
+26 şas 
+	cM”£ÂeTwi¡”
+
+
+28 
+	mm_bufãr
+[
+MT_LEN
+];
+
+29 
+	mm_šdex
+;
+
+31 
+	mpublic
+:
+
+32 
+M”£ÂeTwi¡”
+(
+£ed
+);
+
+34 
+	$š‹g”
+(è
+	`__©Œibu‹__
+((
+nošlše
+));
+
+37 
+M”£ÂeTwi¡”
+::
+	$M”£ÂeTwi¡”
+(
+£ed
+)
+
+41 
+i
+ = 0; i < 
+MT_LEN
+; i++)
+
+42 
+m_bufãr
+[
+i
+] = 
+£ed
+;
+
+43 
+m_šdex
+ = 0;
+
+44 
+i
+ = 0; i < 
+MT_LEN
+ * 100; i++)
+
+45 
+	`š‹g”
+();
+
+46 
+	}
+}
+
+48 
+	gM”£ÂeTwi¡”
+::
+	$š‹g”
+()
+
+51 
+i
+ = 
+m_šdex
+;
+
+52 
+i2
+ = 
+m_šdex
+ + 1; ià(i2 >ğ
+MT_LEN
+) i2 = 0;
+
+53 
+j
+ = 
+m_šdex
+ + 
+MT_IA
+; ià(j >ğ
+MT_LEN
+) j -= MT_LEN;
+
+56 
+s
+ = (
+m_bufãr
+[
+i
+] & 0x80000000è| (m_bufãr[
+i2
+] & 0x7fffffff);
+
+57 
+r
+ = 
+m_bufãr
+[
+j
+] ^ (
+s
+ >> 1) ^ ((s & 1) * 0x9908B0DF);
+
+58 
+m_bufãr
+[
+m_šdex
+] = 
+r
+;
+
+59 
+m_šdex
+ = 
+i2
+;
+
+62 
+r
+ ^= (r >> 11);
+
+63 
+r
+ ^= (r << 7) & 0x9d2c5680UL;
+
+64 
+r
+ ^= (r << 15) & 0xefc60000UL;
+
+65 
+r
+ ^= (r >> 18);
+
+66  
+r
+;
+
+67 
+	}
+}
+
+73 
+£m_t
+ 
+	gbegšSema1
+;
+
+74 
+£m_t
+ 
+	gbegšSema2
+;
+
+75 
+£m_t
+ 
+	g’dSema
+;
+
+77 
+	gX
+, 
+	gY
+;
+
+78 
+	gr1
+, 
+	gr2
+;
+
+84 *
+	$th»ad1Func
+(*
+·¿m
+)
+
+86 
+M”£ÂeTwi¡”
+ 
+	`¿ndom
+(1);
+
+89 
+	`£m_wa™
+(&
+begšSema1
+);
+
+90 
+¿ndom
+.
+	`š‹g”
+() % 8 != 0) {}
+
+93 
+X
+ = 1;
+
+94 #ià
+USE_CPU_FENCE
+
+
+95 
+asm
+ volatile("mfence" ::: "memory");
+
+97 
+asm
+ volatile("" ::: "memory");
+
+99 
+r1
+ = 
+Y
+;
+
+101 
+	`£m_po¡
+(&
+’dSema
+);
+
+103  
+NULL
+;
+
+104 
+	}
+};
+
+106 *
+	$th»ad2Func
+(*
+·¿m
+)
+
+108 
+M”£ÂeTwi¡”
+ 
+	`¿ndom
+(2);
+
+111 
+	`£m_wa™
+(&
+begšSema2
+);
+
+112 
+¿ndom
+.
+	`š‹g”
+() % 8 != 0) {}
+
+115 
+Y
+ = 1;
+
+116 #ià
+USE_CPU_FENCE
+
+
+117 
+asm
+ volatile("mfence" ::: "memory");
+
+119 
+asm
+ volatile("" ::: "memory");
+
+121 
+r2
+ = 
+X
+;
+
+123 
+	`£m_po¡
+(&
+’dSema
+);
+
+125  
+NULL
+;
+
+126 
+	}
+};
+
+128 *
+	$th»ad3Func
+(*
+·¿m
+)
+
+130 
+M”£ÂeTwi¡”
+ 
+	`¿ndom
+(1);
+
+133 
+	`£m_wa™
+(&
+begšSema1
+);
+
+134 
+¿ndom
+.
+	`š‹g”
+() % 8 != 0) {}
+
+137 
+X
+ = 1;
+
+138 #ià
+USE_CPU_FENCE
+
+
+139 
+asm
+ volatile("mfence" ::: "memory");
+
+141 
+asm
+ volatile("" ::: "memory");
+
+143 
+Y
+ = 1;
+
+145 
+	`£m_po¡
+(&
+’dSema
+);
+
+147  
+NULL
+;
+
+148 
+	}
+};
+
+150 *
+	$th»ad4Func
+(*
+·¿m
+)
+
+152 
+M”£ÂeTwi¡”
+ 
+	`¿ndom
+(2);
+
+155 
+	`£m_wa™
+(&
+begšSema2
+);
+
+156 
+¿ndom
+.
+	`š‹g”
+() % 8 != 0) {}
+
+159 
+r1
+ = 
+Y
+;
+
+160 #ià
+USE_CPU_FENCE
+
+
+161 
+asm
+ volatile("mfence" ::: "memory");
+
+163 
+asm
+ volatile("" ::: "memory");
+
+165 
+r2
+ = 
+X
+;
+
+167 
+	`£m_po¡
+(&
+’dSema
+);
+
+169  
+NULL
+;
+
+170 
+	}
+};
+
+172 *
+	$th»ad5Func
+(*
+·¿m
+)
+
+174 
+M”£ÂeTwi¡”
+ 
+	`¿ndom
+(1);
+
+177 
+	`£m_wa™
+(&
+begšSema1
+);
+
+178 
+¿ndom
+.
+	`š‹g”
+() % 8 != 0) {}
+
+181 
+r1
+ = 
+X
+;
+
+182 #ià
+USE_CPU_FENCE
+
+
+183 
+asm
+ volatile("mfence" ::: "memory");
+
+185 
+asm
+ volatile("" ::: "memory");
+
+187 
+Y
+ = 1;
+
+189 
+	`£m_po¡
+(&
+’dSema
+);
+
+191  
+NULL
+;
+
+192 
+	}
+};
+
+194 *
+	$th»ad6Func
+(*
+·¿m
+)
+
+196 
+M”£ÂeTwi¡”
+ 
+	`¿ndom
+(2);
+
+199 
+	`£m_wa™
+(&
+begšSema2
+);
+
+200 
+¿ndom
+.
+	`š‹g”
+() % 8 != 0) {}
+
+203 
+r2
+ = 
+Y
+;
+
+204 #ià
+USE_CPU_FENCE
+
+
+205 
+asm
+ volatile("mfence" ::: "memory");
+
+207 
+asm
+ volatile("" ::: "memory");
+
+209 
+X
+ = 1;
+
+211 
+	`£m_po¡
+(&
+’dSema
+);
+
+213  
+NULL
+;
+
+214 
+	}
+};
+
+216 
+	$maš
+(
+¬gc
+, ** 
+¬gv
+)
+
+219 ià(
+¬gc
+ > 2)
+
+221 
+	`´štf
+("Too Many Arguments: Only Need One.\n");
+
+225 ià(
+¬gc
+ == 1)
+
+227 
+	`´štf
+("You Should Give‡n Argument: 1 or 2 or 3.\n");
+
+231 
+i
+;
+
+233 
+i
+ = 
+	`©oi
+(
+¬gv
+[1]);
+
+235 ià(
+i
+ < 1 || i > 3)
+
+237 
+	`´štf
+("Wrong Argument: Only 1 or 2 or 3 Can be Input.\n");
+
+242 
+	`£m_š™
+(&
+begšSema1
+, 0, 0);
+
+243 
+	`£m_š™
+(&
+begšSema2
+, 0, 0);
+
+244 
+	`£m_š™
+(&
+’dSema
+, 0, 0);
+
+247 
+±h»ad_t
+ 
+th»ad1
+, 
+th»ad2
+;
+
+250 ià(
+i
+ == 1)
+
+252 
+	`±h»ad_ü—‹
+(&
+th»ad1
+, 
+NULL
+, 
+th»ad1Func
+, NULL);
+
+253 
+	`±h»ad_ü—‹
+(&
+th»ad2
+, 
+NULL
+, 
+th»ad2Func
+, NULL);
+
+256 ià(
+i
+ == 2)
+
+258 
+	`±h»ad_ü—‹
+(&
+th»ad1
+, 
+NULL
+, 
+th»ad3Func
+, NULL);
+
+259 
+	`±h»ad_ü—‹
+(&
+th»ad2
+, 
+NULL
+, 
+th»ad4Func
+, NULL);
+
+264 
+	`±h»ad_ü—‹
+(&
+th»ad1
+, 
+NULL
+, 
+th»ad5Func
+, NULL);
+
+265 
+	`±h»ad_ü—‹
+(&
+th»ad2
+, 
+NULL
+, 
+th»ad6Func
+, NULL);
+
+268 #ià
+USE_SINGLE_HW_THREAD
+
+
+270 
+ıu_£t_t
+ 
+ıus
+;
+
+271 
+	`CPU_ZERO
+(&
+ıus
+);
+
+272 
+	`CPU_SET
+(0, &
+ıus
+);
+
+273 
+	`±h»ad_£ffš™y_Å
+(
+th»ad1
+, (
+ıu_£t_t
+), &
+ıus
+);
+
+274 
+	`±h»ad_£ffš™y_Å
+(
+th»ad2
+, (
+ıu_£t_t
+), &
+ıus
+);
+
+278 
+d‘eùed
+ = 0;
+
+279 
+™”©iÚs
+ = 1; ; iterations++)
+
+282 
+X
+ = 0;
+
+283 
+Y
+ = 0;
+
+285 
+	`£m_po¡
+(&
+begšSema1
+);
+
+286 
+	`£m_po¡
+(&
+begšSema2
+);
+
+288 
+	`£m_wa™
+(&
+’dSema
+);
+
+289 
+	`£m_wa™
+(&
+’dSema
+);
+
+292 ià(
+i
+ == 1)
+
+294 ià(
+r1
+ =ğ0 && 
+r2
+ == 0)
+
+296 
+d‘eùed
+++;
+
+297 
+	`´štf
+("%d„eÜd” d‘eùed‡á” %d i‹¿tiÚs\n", 
+d‘eùed
+, 
+™”©iÚs
+);
+
+301 ià(
+i
+ == 2)
+
+303 ià(
+r1
+ =ğ1 && 
+r2
+ == 0)
+
+305 
+d‘eùed
+++;
+
+306 
+	`´štf
+("%d„eÜd” d‘eùed‡á” %d i‹¿tiÚs\n", 
+d‘eùed
+, 
+™”©iÚs
+);
+
+312 ià(
+r1
+ =ğ1 && 
+r2
+ == 1)
+
+314 
+d‘eùed
+++;
+
+315 
+	`´štf
+("%d„eÜd” d‘eùed‡á” %d i‹¿tiÚs\n", 
+d‘eùed
+, 
+™”©iÚs
+);
+
+320 
+	}
+}
+
+	@
+1
+.
+0
+1
+13
+ordering.cpp

@@ -41,10 +41,11 @@
    enum yytokentype {
      NAME = 258,
      NUMBER = 259,
-     EOL = 260,
-     LET = 261,
-     UMINUS = 262,
-     NMINUS = 263
+     CMP = 260,
+     EOL = 261,
+     LET = 262,
+     UMINUS = 263,
+     NMINUS = 264
    };
 #endif
 
@@ -60,13 +61,14 @@ typedef union YYSTYPE
 	struct _ast_st	*a;
 	struct _symbol_st *name;
 	struct _param_st *param;
+	int	t;
 	char * c;
 	double 	d;
 
 
 
 /* Line 1676 of yacc.c  */
-#line 70 "calc.tab.h"
+#line 72 "calc.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

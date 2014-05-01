@@ -14,3 +14,4 @@ do
 	echo $a[${i}]
 	let i=$i+1
 done
+

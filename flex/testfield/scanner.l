@@ -30,6 +30,13 @@
 "(" |
 ")"  	{return yytext[0];}
 
+">"		{yylval.t = 0; return CMP;}
+"<"		{yylval.t = 1; return CMP;}
+">="	{yylval.t = 2; return CMP;}
+"<="	{yylval.t = 3; return CMP;}
+"=="	{yylval.t = 4; return CMP;}
+"!="	{yylval.t = 5; return CMP;}
+
 "let" 	{return LET;}
 
 [a-zA-Z][a-zA-Z0-9]*	{yylval.name = lookup(yytext); return NAME;}

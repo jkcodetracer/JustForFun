@@ -28,7 +28,6 @@ typedef struct _num_st{
 	int nodetype;			/* type N, the number */
 	double number;
 }num_st;
-
 /**
  * \brief for the symbol in the ground
  */
@@ -65,6 +64,13 @@ typedef struct _name_st{
 	symbol_st *sym;			/* it's content. */
 }name_st;
 
+/* the compare caculer */
+typedef struct _cmp_st{
+	int nodetype;			/* type '0' '1' ...*/
+	ast_st *l;				
+	ast_st *r;
+}cmp_st;
+
 #define NHASH	(9999)
 
 symbol_st symbol_table[NHASH];
@@ -72,6 +78,7 @@ symbol_st symbol_table[NHASH];
 symbol_st *lookup(char* name);
 ast_st *newast(int type, ast_st *l, ast_st *r);
 ast_st *newnum(double d);
+ast_st *newcmp(int type, ast_st *l, ast_st *r);
 //ast_st *new_userfunc(ast_st *func, param_st *plist);
 //ast_st *new_callfunc(symbol_st *func, param_st *plist);
 ast_st *newname(symbol_st *name);

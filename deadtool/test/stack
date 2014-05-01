@@ -1,0 +1,8 @@
+[<c010da6a>] save_stack_trace_tsk+0x2a/0x50
+[<c0250df3>] proc_pid_stack+0x83/0x120
+[<c02523d5>] proc_single_show+0x55/0x90
+[<c02256c5>] seq_read+0xf5/0x3a0
+[<c020ab5f>] vfs_read+0x9f/0x1a0
+[<c020ad12>] sys_read+0x42/0x70
+[<c01033ec>] syscall_call+0x7/0xb
+[<ffffffff>] 0xffffffff

@@ -36,6 +36,23 @@ ast_st *newast(int type, ast_st *l, ast_st *r)
 	return pnew;
 }
 
+ast_st *newcmp(int nodetype, ast_st *l, ast_st *r)
+{
+	cmp_st *pcmp = NULL;
+
+	pcmp = (cmp_st*) malloc(sizeof(cmp_st));
+	if(pcmp == NULL) {
+		printf("alloc new cmp_st failed!\n");	
+		return NULL;
+	}
+
+	pcmp->nodetype = '0' + nodetype;
+	pcmp->l = l;
+	pcmp->r = r;
+
+	return (ast_st *)pcmp;
+}
+
 ast_st *newnum(double d)
 {
 	num_st *pnew = NULL;
@@ -245,7 +262,7 @@ double eval(ast_st *past)
 		printf("eval internal error!\n");	
 		return 0.0;
 	}
-
+	/* 修改成表驱动的， 效率会更高. */
 	switch(past->nodetype){
 	case 'N':
 		result = ((num_st*)past)->number;	
@@ -265,6 +282,13 @@ double eval(ast_st *past)
 	case 'M':
 		result = -eval(past->l);
 		break;
+	case '0': result = eval(((cmp_st*)past)->l) > eval(((cmp_st*)past)->r)? 1:0; break;
+	case '1': result = eval(((cmp_st*)past)->l) < eval(((cmp_st*)past)->r)? 1:0; break;
+	case '2': result = eval(((cmp_st*)past)->l) >= eval(((cmp_st*)past)->r)? 1:0; break;
+	case '3': result = eval(((cmp_st*)past)->l) <= eval(((cmp_st*)past)->r)? 1:0; break;
+	case '4': result = eval(((cmp_st*)past)->l) == eval(((cmp_st*)past)->r)? 1:0; break;
+	case '5': result = eval(((cmp_st*)past)->l) != eval(((cmp_st*)past)->r)? 1:0; break;
+
 	case 'S':
 		result = ((name_st*)past)->sym->value;
 		break;

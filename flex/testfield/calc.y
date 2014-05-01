@@ -18,15 +18,18 @@
 	struct _ast_st	*a;
 	struct _symbol_st *name;
 	struct _param_st *param;
+	int	t;
 	char * c;
 	double 	d;
 }
 
 %token <name>	NAME
 %token <d> 		NUMBER
+%token <t> 		CMP
 %token EOL
 %token LET
 
+%nonassoc CMP
 %right '='
 %left '+' '-'
 %left '*' '/'
@@ -57,6 +60,7 @@ exp: '-' exp %prec NMINUS 	{$$ = newast('M', $2, NULL);}
 | exp '-' exp				{$$ = newast('-', $1, $3);}
 | exp '*' exp				{$$ = newast('*', $1, $3);}
 | exp '/' exp				{$$ = newast('/', $1, $3);}
+| exp CMP exp				{$$ = newcmp($2, $1, $3);}
 | '(' exp ')' 				{$$ = $2;}
 | NUMBER					{$$ = newnum($1);}
 | NAME						{$$ = newname($1);}

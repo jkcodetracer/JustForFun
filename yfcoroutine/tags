@@ -1,0 +1,46 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+COROUTINE_DEAD	./coroutine.h	4;"	d
+COROUTINE_READY	./coroutine.h	5;"	d
+COROUTINE_RUNNING	./coroutine.h	6;"	d
+COROUTINE_SUSPEND	./coroutine.h	7;"	d
+C_COROUTINE_H	./coroutine.h	2;"	d
+DEFAULT_COROUTINE	./coroutine.c	11;"	d	file:
+STACK_SIZE	./coroutine.c	10;"	d	file:
+_co_delete	./coroutine.c	/^_co_delete(struct coroutine *co) {$/;"	f
+_co_new	./coroutine.c	/^_co_new(struct schedule *S , coroutine_func func, void *ud) {$/;"	f
+_save_stack	./coroutine.c	/^_save_stack(struct coroutine *C, char *top) {$/;"	f	file:
+args	./main.c	/^struct args {$/;"	s	file:
+cap	./coroutine.c	/^	int cap;$/;"	m	struct:schedule	file:
+cap	./coroutine.c	/^	ptrdiff_t cap;$/;"	m	struct:coroutine	file:
+co	./coroutine.c	/^	struct coroutine **co;$/;"	m	struct:schedule	typeref:struct:schedule::coroutine	file:
+coroutine	./coroutine.c	/^struct coroutine {$/;"	s	file:
+coroutine_close	./coroutine.c	/^coroutine_close(struct schedule *S) {$/;"	f
+coroutine_func	./coroutine.h	/^typedef void (*coroutine_func)(struct schedule *, void *ud);$/;"	t
+coroutine_new	./coroutine.c	/^coroutine_new(struct schedule *S, coroutine_func func, void *ud) {$/;"	f
+coroutine_open	./coroutine.c	/^coroutine_open(void) {$/;"	f
+coroutine_resume	./coroutine.c	/^coroutine_resume(struct schedule * S, int id) {$/;"	f
+coroutine_running	./coroutine.c	/^coroutine_running(struct schedule * S) {$/;"	f
+coroutine_status	./coroutine.c	/^coroutine_status(struct schedule * S, int id) {$/;"	f
+coroutine_yield	./coroutine.c	/^coroutine_yield(struct schedule * S) {$/;"	f
+ctx	./coroutine.c	/^	ucontext_t ctx;$/;"	m	struct:coroutine	file:
+foo	./main.c	/^foo(struct schedule * S, void *ud) {$/;"	f	file:
+func	./coroutine.c	/^	coroutine_func func;$/;"	m	struct:coroutine	file:
+main	./coroutine.c	/^	ucontext_t main;$/;"	m	struct:schedule	file:
+main	./main.c	/^main() {$/;"	f
+mainfunc	./coroutine.c	/^mainfunc(uint32_t low32, uint32_t hi32) {$/;"	f	file:
+n	./main.c	/^	int n;$/;"	m	struct:args	file:
+nco	./coroutine.c	/^	int nco;$/;"	m	struct:schedule	file:
+running	./coroutine.c	/^	int running;$/;"	m	struct:schedule	file:
+sch	./coroutine.c	/^	struct schedule * sch;$/;"	m	struct:coroutine	typeref:struct:coroutine::schedule	file:
+schedule	./coroutine.c	/^struct schedule {$/;"	s	file:
+size	./coroutine.c	/^	ptrdiff_t size;$/;"	m	struct:coroutine	file:
+stack	./coroutine.c	/^	char *stack;$/;"	m	struct:coroutine	file:
+stack	./coroutine.c	/^	char stack[STACK_SIZE];$/;"	m	struct:schedule	file:
+status	./coroutine.c	/^	int status;$/;"	m	struct:coroutine	file:
+test	./main.c	/^test(struct schedule *S) {$/;"	f	file:
+ud	./coroutine.c	/^	void *ud;$/;"	m	struct:coroutine	file:

@@ -1,0 +1,16 @@
+rootfs / rootfs rw 0 0
+none /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+none /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+none /dev devtmpfs rw,relatime,size=895380k,nr_inodes=217047,mode=755 0 0
+none /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+/dev/sda6 /host fuseblk rw,nosuid,nodev,relatime,user_id=0,group_id=0,allow_other,blksize=4096 0 0
+/dev/loop0 / ext4 rw,relatime,errors=remount-ro,barrier=1,data=ordered 0 0
+none /sys/fs/fuse/connections fusectl rw,relatime 0 0
+none /sys/kernel/debug debugfs rw,relatime 0 0
+none /sys/kernel/security securityfs rw,relatime 0 0
+none /dev/shm tmpfs rw,nosuid,nodev,relatime 0 0
+none /var/run tmpfs rw,nosuid,relatime,mode=755 0 0
+none /var/lock tmpfs rw,nosuid,nodev,noexec,relatime 0 0
+none /lib/init/rw tmpfs rw,nosuid,relatime,mode=755 0 0
+binfmt_misc /proc/sys/fs/binfmt_misc binfmt_misc rw,nosuid,nodev,noexec,relatime 0 0
+gvfs-fuse-daemon /home/joker/.gvfs fuse.gvfs-fuse-daemon rw,nosuid,nodev,relatime,user_id=1000,group_id=1000 0 0
